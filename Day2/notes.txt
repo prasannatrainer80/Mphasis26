@@ -1,0 +1,28 @@
+RequestDispatcher : This interface allows you to redirect/include the target pages in the current servlet page. 
+
+Asssume, if I want to redirect to menu.html, then 
+
+RequestDispatcher disp = request.getRequestDispatcher("menu.html");
+disp.forward(request,response);
+
+Assume, if you want to add login.html page to servlet, then 
+
+RequestDispatcher disp = request.getRequestDispatcher("login.html");
+disp.include(request,response);
+
+State Management : In tradition console/windows apps, there is no need to look out for the state, as memory is available and your program is running in one corner of memory location, but in web applications, the scenario is different, as no.of people accessing your application from various places, then its necessary to maintain both client-side/server-side data values. This can be ensured by using 
+statement management as categorized as
+
+(i) Client-Side
+
+	Cookies : Contains small piece of information w.r.t. Key/Value pairs and stored in cookies folder of your system and will be deleted automatically once the timeout happens. 
+
+	QueryString : Allows you to redirect to the target page with values in the url. (If you want to pass values from URL, you can achieve this by using Query String) 
+
+Values will be specified by ? example as
+
+<a href="HelloServlet?company=mphasis">Hello</a>
+
+(ii) Server-Side 
+
+	Session 
