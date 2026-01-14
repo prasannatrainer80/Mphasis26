@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="post" action="EmployShowServlet">
+		<center>
+			Employ Id : 
+			<input type="number" name="empId" /> <br/>
+			Employ Name : 
+			<input type="text" name="empName" /> <br/>
+			Gender : 
+			<input type="radio" name="gender" value="Male" /> Male 
+			<input type="radio" name="gender" value="Female" /> Female <br/>
+			Hobbies : 
+			<input type="checkbox" name="hobbies" value="Playing Cricket" />
+			Playing Cricket &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="checkbox" name="hobbies" value="Listening Music" />
+			Listening Music &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="checkbox" name="hobbies" value="Singing Songs" />
+			Singing Songs &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="checkbox" name="hobbies" value="Pseudoco Solving" />
+			Pseudoco Solving &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<br/><br/>
+			Department : 
+			<select name="dept">
+				<option value="Dotnet">Dotnet</option>
+				<option value="Java">Java</option>
+				<option value="Angular">Angular</option>
+			</select> <br/>
+			Salary : 
+			<input type="number" name="salary" /> <br/><br/>
+			<input type="submit" value="Show Form" />
+			
+		</center>
+	</form>
+</body>
+</html>
