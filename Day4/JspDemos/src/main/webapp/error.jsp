@@ -1,0 +1,14 @@
+<%@ page isErrorPage="true" language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p> There is an Error Occurred in this Page</p>
+	<p>Exception Class : <%=exception.getClass() %> </p>
+	<p>Error Message : <%=exception.getMessage() %> </p>
+</body>
+</html>
