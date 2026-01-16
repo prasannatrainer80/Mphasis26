@@ -40,15 +40,18 @@
 		</center>
 	</form>
 	<%
-		EmployDao employDao = new EmployDaoImpl();
-		Employ employ = new Employ();
-		employ.setEmpno(Integer.parseInt(request.getParameter("empno")));
-		employ.setName(request.getParameter("name"));
-		employ.setGender(Gender.valueOf(request.getParameter("gender")));
-		employ.setDept(request.getParameter("dept"));
-		employ.setDesig(request.getParameter("desig"));
-		employ.setBasic(Double.parseDouble(request.getParameter("basic")));
-		out.println(employDao.addEmploy(employ));
+		if (request.getParameter("empno")!=null && request.getParameter("basic")!=null) {
+			EmployDao employDao = new EmployDaoImpl();
+			Employ employ = new Employ();
+			employ.setEmpno(Integer.parseInt(request.getParameter("empno")));
+			employ.setName(request.getParameter("name"));
+			employ.setGender(Gender.valueOf(request.getParameter("gender")));
+			employ.setDept(request.getParameter("dept"));
+			employ.setDesig(request.getParameter("desig"));
+			employ.setBasic(Double.parseDouble(request.getParameter("basic")));
+			out.println(employDao.addEmploy(employ));	
+		}
+		
 	%>
 </body>
 </html>
