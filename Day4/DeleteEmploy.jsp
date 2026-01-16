@@ -9,19 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" action="DeleteEmploy.jsp">
-		<center>
-			Employ No : 
-			<input type="number" name="empno" /> <br/>
-			<input type="submit" value="Delete" /> 
-		</center>
-	</form>
 	<%
-		if (request.getParameter("empno")!=null) {
-			int empno = Integer.parseInt(request.getParameter("empno"));
-			EmployDao employDao = new EmployDaoImpl();
-			out.println(employDao.deleteEmploy(empno));
-		}
+		int empno = Integer.parseInt(request.getParameter("empno"));
+		EmployDao employDao = new EmployDaoImpl();
+		out.println(employDao.deleteEmploy(empno));
 	%>
+	<jsp:forward page="EmployTable.jsp" />
 </body>
 </html>

@@ -47,5 +47,6 @@
 			}
 		%>
 	</table>
+	<a href="AddEmploy.jsp">Add Employ</a>
 </body>
 </html>

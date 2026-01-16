@@ -51,6 +51,9 @@
 			employ.setDesig(request.getParameter("desig"));
 			employ.setBasic(Double.parseDouble(request.getParameter("basic")));
 			out.println(employDao.addEmploy(employ));	
+	%>
+		<jsp:forward page="EmployTable.jsp" />
+	<%
 		}
 	%>
 </body>
