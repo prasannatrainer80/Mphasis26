@@ -46,4 +46,26 @@ public class AccountsDaoImpl implements AccountsDao {
 		return "Account Created with Account No " +accno;
 	}
 
+	@Override
+	public Accounts searchAccount(int accountNo) throws ClassNotFoundException, SQLException {
+		connection = ConnectionHelper.getConnection();
+		String cmd = "select * from Accounts where accountNo = ?";
+		psmt = connection.prepareStatement(cmd);
+		psmt.setInt(1, accountNo);
+		ResultSet rs = psmt.executeQuery();
+		Accounts account = null;
+		if (rs.next()) {
+			account = new Accounts();
+			account.setAccountNo(accountNo);
+			account.setFirstName(rs.getString("firstName"));
+			account.setLastName(rs.getString("lastName"));
+			account.setCity(rs.getString("city"));
+			account.setState(rs.getString("state"));
+			account.setAmount(rs.getDouble("amount"));
+			account.setCheqFacil(rs.getString("cheqFacil"));
+			account.setAccountType(rs.getString("accountType"));
+		}
+		return account;
+	}
+
 }
