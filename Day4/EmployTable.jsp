@@ -23,6 +23,8 @@
 			<th>Department</th>
 			<th>Designation</th>
 			<th>Basic</th>
+			<th>Update</th>
+			<th>Delete</th>
 		</tr>
 		<%
 			for(Employ employ : employList) {
@@ -34,6 +36,12 @@
 				<td><%=employ.getDept() %> </td>
 				<td><%=employ.getDesig() %> </td>
 				<td><%=employ.getBasic() %> </td>
+				<td> 
+					<a href=UpdateEmploy.jsp?empno=<%=employ.getEmpno() %>>Update</a>
+				</td>
+				<td> 
+					<a href=DeleteEmploy.jsp?empno=<%=employ.getEmpno() %>>Delete</a>
+				</td>
 			</tr>
 		<%
 			}

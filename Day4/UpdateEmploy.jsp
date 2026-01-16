@@ -1,4 +1,3 @@
-<%@page import="com.java.jsp.model.Gender"%>
 <%@page import="com.java.jsp.model.Employ"%>
 <%@page import="com.java.jsp.dao.EmployDaoImpl"%>
 <%@page import="com.java.jsp.dao.EmployDao"%>
@@ -11,48 +10,33 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" action="UpdateEmploy.jsp">
+	<%
+		int empno = Integer.parseInt(request.getParameter("empno"));
+		EmployDao employDao = new EmployDaoImpl();
+		Employ employ = employDao.searchEmploy(empno);
+	%>
+		<form method="post" action="UpdateEmploy.jsp">
 		<center>
 			Employ No : 
-			<input type="number" name="empno" /> <br/>
-			Employ Name :
-			<input type="text" name="name" /> <br/>
-			Gender : 
-			<select name="gender">
-				<option value="MALE">MALE</option> 
-				<option value="FEMALE">FEMALE</option>
-			</select> <Br/>
+			<input type="number" name="empno" readonly 
+				value=<%=employ.getEmpno() %> > <br/><br/>
+			Employ Name : 
+			<input type="text" name="name" value=<%=employ.getName() %> >
+			<br/><br/>
+			Gender :  
+			<input type="text" name="gender" value=<%=employ.getGender() %> >
+			<br/><br/>
 			Department : 
-			<select name="dept">
-				<option value="Dotnet">Dotnet</option>
-				<option value="Java">Java</option>
-				<option value="Sql">Sql</option>
-			</select> <br/>
+			<input type="text" name="dept" value=<%=employ.getDept() %> >
+			<br/><br/>
 			Designation : 
-			<select name="desig">
-				<option value="Developer">Developer</option>
-				<option value="TeamLead">TeamLead</option>
-				<option value="Manager">Manager</option>
-			</select> <Br/>
+			<input type="text" name="desig" value=<%=employ.getDesig() %> >
+			<br/><br/>
 			Basic : 
-			<input type="number" name="basic" />
-			<input type="submit" value="Update Employ" />
-		</center>
-	</form>
-	<%
-		if (request.getParameter("empno")!=null && 
-			request.getParameter("basic")!=null) {
-			EmployDao employDao = new EmployDaoImpl();
-			Employ employ = new Employ();
-			employ.setEmpno(Integer.parseInt(request.getParameter("empno")));
-			employ.setName(request.getParameter("name"));
-			employ.setGender(Gender.valueOf(request.getParameter("gender")));
-			employ.setDept(request.getParameter("dept"));
-			employ.setDesig(request.getParameter("desig"));
-			employ.setBasic(Double.parseDouble(request.getParameter("basic")));
-			out.println(employDao.updateEmploy(employ));	
-		}
-	%>
-
+			<input type="number" name="basic" value=<%=employ.getBasic() %> >
+			<br/><br/>
+			<input type="submit" value="Update" />
+			</center>
+		</form>
 </body>
 </html>
