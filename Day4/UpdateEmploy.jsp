@@ -1,5 +1,5 @@
-<%@page import="com.java.jsp.model.Employ"%>
 <%@page import="com.java.jsp.model.Gender"%>
+<%@page import="com.java.jsp.model.Employ"%>
 <%@page import="com.java.jsp.dao.EmployDaoImpl"%>
 <%@page import="com.java.jsp.dao.EmployDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" action="AddEmploy.jsp">
+	<form method="post" action="UpdateEmploy.jsp">
 		<center>
 			Employ No : 
 			<input type="number" name="empno" /> <br/>
@@ -36,7 +36,7 @@
 			</select> <Br/>
 			Basic : 
 			<input type="number" name="basic" />
-			<input type="submit" value="Add Employ" />
+			<input type="submit" value="Update Employ" />
 		</center>
 	</form>
 	<%
@@ -50,8 +50,9 @@
 			employ.setDept(request.getParameter("dept"));
 			employ.setDesig(request.getParameter("desig"));
 			employ.setBasic(Double.parseDouble(request.getParameter("basic")));
-			out.println(employDao.addEmploy(employ));	
+			out.println(employDao.updateEmploy(employ));	
 		}
 	%>
+
 </body>
 </html>
