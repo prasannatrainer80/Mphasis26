@@ -1,0 +1,49 @@
+package com.java.bank.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.java.bank.model.Accounts;
+import com.java.bank.util.ConnectionHelper;
+
+public class AccountsDaoImpl implements AccountsDao {
+
+	Connection connection;
+	PreparedStatement psmt;
+	
+	public int generateAccountNo() throws ClassNotFoundException, SQLException {
+		connection = ConnectionHelper.getConnection();
+		String cmd ="select case when max(accountNo) IS NULL THEN 1 "
+				+ " else max(accountNo)+1 end accno from Accounts";
+		psmt = connection.prepareStatement(cmd);
+		ResultSet rs = psmt.executeQuery();
+		rs.next();
+		int accno = rs.getInt("accno");
+		psmt.close();
+		connection.close();
+		return accno;
+	}
+	
+	@Override
+	public String createAccount(Accounts accounts) throws ClassNotFoundException, SQLException {
+		int accno = generateAccountNo();
+		accounts.setAccountNo(accno);
+		String cmd = "Insert into Accounts(AccountNo,FirstName,LastName,"
+	+ "City,State,Amount,CheqFacil,AccountType) values(?,?,?,?,?,?,?,?)";
+		connection = ConnectionHelper.getConnection();
+		psmt = connection.prepareStatement(cmd);
+		psmt.setInt(1, accno);
+		psmt.setString(2, accounts.getFirstName());
+		psmt.setString(3, accounts.getLastName());
+		psmt.setString(4, accounts.getCity());
+		psmt.setString(5, accounts.getState());
+		psmt.setDouble(6, accounts.getAmount());
+		psmt.setString(7, accounts.getCheqFacil());
+		psmt.setString(8, accounts.getAccountType());
+		psmt.executeUpdate();
+		return "Account Created with Account No " +accno;
+	}
+
+}
