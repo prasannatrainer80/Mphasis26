@@ -1,0 +1,30 @@
+JSTL (Java Standard Tag Library) 
+
+Allows you to write any java code using Scripting tags, that which helps to improve the performance of the given application. 
+
+Java Code Contains
+
+	variables
+	expressions
+	control structures 
+	etc...
+
+For writing those we have various tags as
+
+1) Core Tags 
+
+For writing JSTL, we need to add the maven dependency
+
+<dependency>
+   <groupId>javax.servlet</groupId>
+   <artifactId>jstl</artifactId>
+   <version>1.2</version>
+</dependency>
+
+You can specify core tags as
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<c:out value="Welcome to JSTL" /> 
+
+    
