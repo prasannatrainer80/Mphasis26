@@ -26,5 +26,11 @@ You can specify core tags as
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:out value="Welcome to JSTL" /> 
+<c:set /> : Allows you declare/assign value. 
+
+<c:set var="sname" value="SivaHari" /> 
+
+<c:out value=${sname} /> 
+
 
     
