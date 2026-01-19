@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.java.hib.model.Employ;
+import com.java.hib.model.Login;
 import com.java.hib.util.SessionHelper;
 
 public class EmployDaoImpl implements EmployDao {
@@ -62,6 +63,20 @@ public class EmployDaoImpl implements EmployDao {
 		session.delete(employ);
 		trans.commit();
 		return "Employ Record Deleted...";
+	}
+
+	@Override
+	public int login(String user, String pwd) {
+		String cmd = "from Login where userName='" +user+"' "
+				+ " and passCode='" +pwd+"'";
+		sessionFactory = SessionHelper.getConnection();
+		session = sessionFactory.openSession();
+		Query query = session.createQuery(cmd);
+		Login loginFound = (Login)query.uniqueResult(); 
+		if (loginFound !=null) {
+			return 1;
+		}
+		return 0;
 	}
 
 }
