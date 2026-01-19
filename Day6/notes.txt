@@ -1,0 +1,30 @@
+Hibernate contains HQL (Hibernate Query Langauge), which takes care of writing sql queries. 
+
+Hibernate contains POJO classes (Plain Old Java Objects) which maps the model classes to database tables.
+
+Means, Assume you have Employ.java class, will be mapped to Employ table in the database. 
+
+To perform this we have predefined annotation are there. Assume we have to map Employ.java class to Employ table in database, the connection string to be specified in configuration file known as hibernate.cfg.xml 
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/mphasis26</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    </session-factory>
+</hibernate-configuration>
+
+@Entity : This annotation ensures, it is a Entity class that which can be directly mapped database table. 
+
+@Table : This annotation ensures, it would be mapped to corresponding table. 
+
+@Id : This annotation ensures, it is a primary key column in database. 
+
+*** In hibernate if primary key is not there we cannot perform the mappings ***
+

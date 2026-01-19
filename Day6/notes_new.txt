@@ -1,0 +1,24 @@
+hibernate.cfg.xml
+
+SessionFactory : Which used to load all configuration information, its optional cache data which is known as first level cache which contains optional info need to loaded into memory. 
+
+SessionFactory sf = new AnnotationConfiguration().configure().buildSessionFactory();
+
+buildSessionFactory() -> This method allows you to fetch config file and load the data into the memory(cache) 
+
+
+
+Session : Its 2nd level cache which contains all mandatory data to be loaded into memory. Session object used to store the database operations. 
+
+Session session =sf.openSesion();
+
+Which used to open new session for the database operations to be performed.
+
+Query : Used to run any HQL commands. 
+
+Query query = session.createQuery();
+
+
+
+Transaction 
+
