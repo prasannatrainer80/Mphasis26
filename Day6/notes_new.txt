@@ -18,7 +18,16 @@ Query : Used to run any HQL commands.
 
 Query query = session.createQuery();
 
+If you have sql command as select * from Employ, the equal in HQL is
+
+from Employ (Here Employ is Employ.java class, which maps to Employ table) so, its case sensitive. 
+
+Transaction : This interface allows you to perform DML operations (INSERT/UPDATE/DELETE) 
+
+Transaction trans = session.beginTransaction();
+session.save(object) -> For Insert
+session.saveOrUpdate(object) -> For Update
+session.delete(object) -> For Delete 
 
 
-Transaction 
 
