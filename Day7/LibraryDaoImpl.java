@@ -73,6 +73,9 @@ public class LibraryDaoImpl implements LibraryDao {
 		TranBook tbook = new TranBook();
 		tbook.setBookId(bookId);
 		tbook.setUserName(user);
+		java.util.Date date = new java.util.Date();
+		Date sqlDate = new Date(date.getTime());
+		tbook.setFromDate(sqlDate);
 		Transaction trans = session.beginTransaction();
 		session.save(tbook);
 		Criteria cr = session.createCriteria(Books.class);
@@ -114,8 +117,18 @@ public class LibraryDaoImpl implements LibraryDao {
 		java.util.Date today = new java.util.Date();
 		java.sql.Date sqlDate = new Date(today.getTime());
 		tr.setToDate(sqlDate);
+		session.save(tr);
 		trans.commit();
 		return "Book with Id " +bookId + " Returned Successfully...";
+	}
+
+	@Override
+	public List<TransReturn> history(String user) {
+		sessionFactory = SessionHelper.getSession();
+		session = sessionFactory.openSession();
+		Criteria cr = session.createCriteria(TransReturn.class);
+		cr.add(Restrictions.eq("userName", user));
+		return cr.list();
 	}
 
 }
