@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,13 +15,8 @@
 </style>
 </head>
 <body>
-<br/>
-<%
-  String user=(String)session.getAttribute("user");
-  out.println("Welcome <b>" +user+"</b>");
-  
-%>
-<br/><br/>
+Welcome to : ${sessionScope.user}
+<br/><br/><br/>
 <div class="logout">
 <input type="button" name="logout" value="Logout" onclick="window.location='index.html'">
 </div>

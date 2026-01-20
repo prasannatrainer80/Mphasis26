@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +11,23 @@
 <form method="post" action="login.jsp">
 <center>
 <h2>Please Login :</h2>
-Username : <input type="text" name="username" size="50"> <br/><br/>
-Password : <input type="password" name="pass" size="50"> <br/><br/>
+Username : <input type="text" name="userName" size="50"> <br/><br/>
+Password : <input type="password" name="passWord" size="50"> <br/><br/>
 <input type="submit" value="Login">
 </center>
 </form>
+<c:if test="${param.userName !=null && param.passWord !=null}">
+	<jsp:useBean id="libusers" class="com.java.lib.model.LibUsers" />
+	<jsp:setProperty property="*" name="libusers"/>
+	<jsp:useBean id="libraryDao" class="com.java.lib.dao.LibraryDaoImpl" />
+	<c:set var="count" value="${libraryDao.authenticate(libusers)}" />
+	<c:if test="${count==1}">
+		<c:set var="user" value="${param.userName}" scope="session" />
+		<jsp:forward page="Menu.jsp" />
+	</c:if>
+	<c:if test="${count==0}">
+		<p>Invalid Credentials</p>
+	</c:if>
+</c:if>
 </body>
 </html>
