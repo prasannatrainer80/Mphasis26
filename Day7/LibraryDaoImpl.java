@@ -1,5 +1,6 @@
 package com.java.lib.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -11,6 +12,7 @@ import org.hibernate.criterion.Restrictions;
 import com.java.lib.model.Books;
 import com.java.lib.model.LibUsers;
 import com.java.lib.model.TranBook;
+import com.java.lib.model.TransReturn;
 import com.java.lib.util.SessionHelper;
 
 public class LibraryDaoImpl implements LibraryDao {
@@ -89,6 +91,31 @@ public class LibraryDaoImpl implements LibraryDao {
 		Criteria cr = session.createCriteria(TranBook.class);
 		cr.add(Restrictions.eq("userName", user));
 		return cr.list();
+	}
+
+	@Override
+	public String returnBook(int bookId, String user) {
+		sessionFactory = SessionHelper.getSession();
+		session = sessionFactory.openSession();
+		Transaction trans = session.beginTransaction();
+		Criteria cr = session.createCriteria(Books.class);
+		cr.add(Restrictions.eq("id", bookId));
+		Books book = (Books)cr.uniqueResult();
+		book.setTotalBooks(book.getTotalBooks()+1);
+		session.saveOrUpdate(book);
+		cr = session.createCriteria(TranBook.class);
+		cr.add(Restrictions.eq("bookId", bookId));
+		TranBook bookFound = (TranBook)cr.uniqueResult();
+		session.delete(bookFound);
+		TransReturn tr = new TransReturn();
+		tr.setBookId(bookFound.getBookId());
+		tr.setUserName(user);
+		tr.setFromDate(bookFound.getFromDate());
+		java.util.Date today = new java.util.Date();
+		java.sql.Date sqlDate = new Date(today.getTime());
+		tr.setToDate(sqlDate);
+		trans.commit();
+		return "Book with Id " +bookId + " Returned Successfully...";
 	}
 
 }

@@ -32,6 +32,13 @@
 		</c:forEach>
 	</table>
 	<input type="submit" value="Return" />
+	<c:if test="${param.bookid != null}">
+	<c:set var="user" value="${sessionScope.user}" />
+		<c:forEach var="id" items="${paramValues.bookid}">
+			<c:out value="${libraryDao.returnBook(id,user)}" />
+			<br/>
+		</c:forEach>
+</c:if>
 </form>
 </body>
 </html>

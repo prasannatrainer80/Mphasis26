@@ -11,5 +11,6 @@ public interface LibraryDao {
 	List<Books> search(String searchType, String searchValue);
 	String issueBook(int bookId,String user);
 	List<TranBook> showIssuedBooks(String user);
+	String returnBook(int bookId,String user);
 	
 }
