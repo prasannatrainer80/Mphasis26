@@ -1,0 +1,109 @@
+Here are clear and commonly-used JSTL Formatting (fmt) tag examples. These are used for date, number, currency, and i18n (localization) formatting in JSP.
+
+1️⃣ Required JSTL Libraries
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+2️⃣ <fmt:formatDate> – Date Formatting
+Example 1: Format current date
+<c:set var="today" value="<%= new java.util.Date() %>" />
+
+<fmt:formatDate value="${today}" pattern="dd-MM-yyyy" />
+
+
+Output
+
+17-01-2026
+
+Example 2: Date & Time
+<fmt:formatDate value="${today}" type="both"
+    dateStyle="medium" timeStyle="short"/>
+
+Example 3: Custom pattern
+<fmt:formatDate value="${today}" pattern="EEEE, dd MMM yyyy HH:mm:ss"/>
+
+
+Output
+
+Saturday, 17 Jan 2026 10:30:15
+
+3️⃣ <fmt:parseDate> – Convert String → Date
+<fmt:parseDate value="17-01-2026" pattern="dd-MM-yyyy" var="parsedDate"/>
+<fmt:formatDate value="${parsedDate}" pattern="yyyy/MM/dd"/>
+
+4️⃣ <fmt:formatNumber> – Number Formatting
+Example 1: Normal number
+<fmt:formatNumber value="1234567.89" />
+
+
+Output
+
+1,234,567.89
+
+Example 2: Decimal control
+<fmt:formatNumber value="12.3456" maxFractionDigits="2"/>
+
+
+Output
+
+12.35
+
+Example 3: Percentage
+<fmt:formatNumber value="0.85" type="percent"/>
+
+
+Output
+
+85%
+
+5️⃣ <fmt:formatNumber> – Currency Formatting 💰
+<fmt:setLocale value="en_IN"/>
+<fmt:formatNumber value="15000" type="currency"/>
+
+
+Output
+
+₹15,000.00
+
+6️⃣ <fmt:setLocale> – Set Locale
+<fmt:setLocale value="fr_FR"/>
+<fmt:formatDate value="${today}" dateStyle="full"/>
+
+
+Output
+
+samedi 17 janvier 2026
+
+7️⃣ <fmt:setBundle> & <fmt:message> – i18n (Messages)
+messages.properties
+welcome=Welcome to the Application
+
+JSP
+<fmt:setBundle basename="messages"/>
+<fmt:message key="welcome"/>
+
+8️⃣ <fmt:timeZone> – Time Zone Handling 🌍
+<fmt:timeZone value="Asia/Kolkata">
+    <fmt:formatDate value="${today}" type="both"/>
+</fmt:timeZone>
+
+9️⃣ Common Patterns Cheat Sheet 📌
+Pattern	Meaning
+dd	Day
+MM	Month
+yyyy	Year
+HH	Hour (24)
+mm	Minutes
+ss	Seconds
+EEEE	Day name
+MMM	Month name
+🔟 Best Practice (Avoid Date.getYear() etc.)
+
+❌ Wrong
+
+date.getYear()
+
+
+✅ Correct
+
+<fmt:formatDate value="${today}" pattern="dd-MM-yyyy"/>
