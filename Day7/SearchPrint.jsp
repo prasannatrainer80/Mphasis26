@@ -13,7 +13,7 @@
 	<c:set var="searchtype" value="${param.searchtype}" />
 	<c:set var="searchvalue" value="${param.searchvalue}" />
 	<c:set var="books" value="${libraryDao.search(searchtype,searchvalue)}" />
-	<form method="post" action="issue.jsp">
+	<form method="get" action="issue.jsp">
 	<table border="3" align="center">
 		<tr>
 			<th>Id</th>
