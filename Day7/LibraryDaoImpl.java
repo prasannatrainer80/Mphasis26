@@ -50,9 +50,22 @@ public class LibraryDaoImpl implements LibraryDao {
 		}
 		return cr.list();
 	}
+	
+	public TranBook issueOrNot(int bookId, String user) {
+		sessionFactory = SessionHelper.getSession();
+		session = sessionFactory.openSession();
+		Criteria cr = session.createCriteria(TranBook.class);
+		cr.add(Restrictions.eq("bookId", bookId));
+		cr.add(Restrictions.eq("userName", user));
+		TranBook tb = (TranBook)cr.uniqueResult();
+		return tb;
+	}
 
 	@Override
 	public String issueBook(int bookId, String user) {
+		if (issueOrNot(bookId, user)!=null) {
+			return "Book with Id " +bookId + " Already Issued to You";
+		}
 		sessionFactory = SessionHelper.getSession();
 		session = sessionFactory.openSession();
 		TranBook tbook = new TranBook();
@@ -67,6 +80,15 @@ public class LibraryDaoImpl implements LibraryDao {
 		session.saveOrUpdate(book);
 		trans.commit();
 		return "Book with Id " +bookId + " Issued Successfully...\n";
+	}
+
+	@Override
+	public List<TranBook> showIssuedBooks(String user) {
+		sessionFactory = SessionHelper.getSession();
+		session = sessionFactory.openSession();
+		Criteria cr = session.createCriteria(TranBook.class);
+		cr.add(Restrictions.eq("userName", user));
+		return cr.list();
 	}
 
 }
