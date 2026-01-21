@@ -1,52 +1,58 @@
 package com.java.hib;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.cfg.Configuration;
 
 public class MainProg {
+
 	public static void main(String[] args) {
-		Configuration cfg = new AnnotationConfiguration().configure();
-		SessionFactory sf = cfg.buildSessionFactory();
-		Session session =sf.openSession();
+		SessionFactory sessionFactory = 
+				new AnnotationConfiguration().configure().buildSessionFactory();
+		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		Employ employ1= new Employ();
-		employ1.setName("sivahari");
-		employ1.setEmail("siva@mphasis.com");
+		Question question1 = new Question();
+		question1.setQname("What is Java");
 		
-		Address address1 = new Address();
-		address1.setAddress1("Jaya Nagar");
-		address1.setAddress2("Sulthan Palya");
-		address1.setCity("Bangalore");
-		address1.setState("KA");
-		address1.setZipcode("8472344");
-		address1.setCountry("INDIA");
+		Question question2 = new Question();
+		question2.setQname("What is EJB");
 		
-		address1.setEmploy(employ1);
+		Answer ans1 = new Answer();
+		ans1.setAnswerName("Java is OOP Programming language");
+		ans1.setPostedBy("Avesh");
 		
-		Employ employ2 = new Employ();
-		employ2.setName("Mythri");
-		employ2.setEmail("Mythri@mphasis.com");
+		Answer ans2 = new Answer();
+		ans2.setAnswerName("EJB is Enterprise Java Beans");
+		ans2.setPostedBy("Avesh");
 		
-		Address address2 = new Address();
-		address2.setAddress1("MVP Colony");
-		address2.setAddress2("Sector 3");
-		address2.setCity("Vizag");
-		address2.setState("AP");
-		address2.setZipcode("482344");
-		address2.setCountry("INDIA");
+		Answer ans3 = new Answer();
+		ans3.setAnswerName("Java is plat form independent");
+		ans3.setPostedBy("Chandu");
 		
-		address2.setEmploy(employ2);
+		Answer ans4 = new Answer();
+		ans4.setAnswerName("EJB Used to make Enterprise Server Components");
+		ans4.setPostedBy("Chandu");
 		
-		session.save(employ1);
-		session.save(employ2);
-		session.save(address1);
-		session.save(address2);
-		transaction.commit();
-		session.close();
-		System.out.println("Tables Created Successfully...");
+		List<Answer> list1 = new ArrayList<Answer>();
+		list1.add(ans1);
+		list1.add(ans3);
+		
+		List<Answer> list2 = new ArrayList<Answer>();
+		list2.add(ans2);
+		list2.add(ans4);
+		
+		question1.setAnswers(list1);
+		question2.setAnswers(list2);
+	    session.save(question1);
+	    session.save(question2);
+	    transaction.commit();
+	    System.out.println("Tables created...");
+
+		
 	}
 }
