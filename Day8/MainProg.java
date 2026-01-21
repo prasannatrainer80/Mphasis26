@@ -7,7 +7,6 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
 public class MainProg {
-
 	public static void main(String[] args) {
 		Configuration cfg = new AnnotationConfiguration().configure();
 		SessionFactory sf = cfg.buildSessionFactory();
