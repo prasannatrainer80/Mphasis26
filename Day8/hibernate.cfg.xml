@@ -6,12 +6,12 @@
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.password">root</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/mphasis26</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Mphasis26</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
-     	<property name="hbm2ddl.auto">create</property>  
-     	<mapping class="com.java.hib.Employ"/>
-     	<mapping class="com.java.hib.Address"/>
+     	<property name="hbm2ddl.auto">update</property>  
+     	<mapping class="com.java.hib.Question"/>
+     	<mapping class="com.java.hib.Answer"/>
     </session-factory>
 </hibernate-configuration>
