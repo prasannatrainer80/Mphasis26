@@ -5,4 +5,5 @@ import java.util.List;
 public interface EmployDao {
 	List<Employ> showEmploy();
 	Employ searchEmploy(int empno);
+	String addEmploy(Employ employ);
 }

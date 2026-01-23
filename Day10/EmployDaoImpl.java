@@ -64,4 +64,19 @@ public class EmployDaoImpl implements EmployDao {
 		return null;
 	}
 
+	@Override
+	public String addEmploy(Employ employ) {
+		String cmd = "Insert into Employ(empno,name,gender,dept,desig,"
+				+ "basic) values(?,?,?,?,?,?)";
+		jdbcTemplate.update(cmd, new Object[] {
+			employ.getEmpno(),
+			employ.getName(),
+			employ.getGender().toString(),
+			employ.getDept(),
+			employ.getDesig(),
+			employ.getBasic()
+		});
+		return "Employ Record Inserted...";
+	}
+
 }
