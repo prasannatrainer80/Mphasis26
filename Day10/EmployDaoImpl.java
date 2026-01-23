@@ -30,7 +30,7 @@ public class EmployDaoImpl implements EmployDao {
 						Employ employ = new Employ();
 						employ.setEmpno(rs.getInt("empno"));
 						employ.setName(rs.getString("name"));
-						employ.setGender(Gender.valueOf(rs.getString("name")));
+						employ.setGender(Gender.valueOf(rs.getString("gender")));
 						employ.setDept(rs.getString("dept"));
 						employ.setDesig(rs.getString("desig"));
 						employ.setBasic(rs.getDouble("basic"));
