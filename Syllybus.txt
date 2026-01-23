@@ -1,0 +1,163 @@
+
+
+At the end of the program, participants will be able to learn: 
+• Build robust, data-driven web applications by integrating key components of Java EE. 
+• Create dynamic, session-managed, data-driven web applications with Java Servlets. 
+• Build Dynamic Web Page views with JSP. 
+• Implement the MVC design pattern for Java web applications. 
+• Use listeners to initialize web sessions and applications. 
+ 
+Day-wise Session Plan 
+ 
+Day Unit Objective(s) Hours 
+1 Introduction to JEE 
+• Introduction to Java EE Architecture 
+• Different Types of Servers 
+• Http Stateless Protocol and its methods 
+2 
+1 Servlet API 
+• Java Servlet Technology 
+• The Model-View-Controller (MVC) Architecture 
+• Java EE Containers and Java Application Servers 
+• Life Cycle of a Servlet 
+• Developing a Servlet to Respond to Requests from 
+the Client Browser 
+• Using HTML Forms to Collect Data from Users and 
+Send it To a Servlet 
+• How Form Data Is Sent in an HTTP Request 
+• Developing a Servlet that Retrieves Form Parameters 
+• Initialization using ServletConfig and ServletContext 
+Interfaces 
+• Redirecting using RequestDispatcher  
+• Redirecting using sendRedirect 
+6 
+ 
+2 Filters 
+• Describing the Web Container Request Cycle 
+• Describing the Filter API 
+• Developing a Filter Class 
+• Configuring a Filter in the web.xml File 
+4 
+2 Listeners 
+• Using the ServletRequestListener Interface 
+• Using the ServletContextListener Interface 
+• Using the HttpSessionListener Interface 
+ 
+3      Java Server Pages 
+(JSP) 
+• Introduction and Life Cycle of JSP 
+• JSP Scriptlets Tags 
+• JSP Expressions Tags 
+• JSP Declarations Tags 
+• JSP Implicit Object 
+ 
+6 
+ 
+Course Design Document 
+ 
+                  Course Design Document | 2 July 2024 | Proprietary and confidential information. © 2024 Mphasis 2 
+ 
+ 
+ 
+3, 4 Calling JSP from Servlets 
+• JSP Action Tags 
+• Forwarding Java objects to JSP 
+• Use request, session, and application objects to 
+store data. 
+6 
+(2+4) 
+4 Developing Custom Tags • Creating custom tags with JSP 2 tag files 
+• Customizing tag behavior with attributes 4 
+5 JSTL 
+• JSTL (JSP Standard Tag Library) 
+• Advantage of JSTL 
+• Types of Tags 
+• Core and Formatting Tags 
+6 
+5,6 Asynchronous web 
+applications 
+• Using the Asynchronous Servlet Mechanism 
+• Using JavaScript to Send an HTTP Request from a 
+Client 
+• Processing an HTTP Response Entirely in 
+JavaScript 
+• Combining These Techniques to Create the 
+Effect of Server-push. 
+6 
+(2+4) 
+6 Web application security 
+• Understand the role of the container in Security. 
+• Describe and implement four authentication 
+models. 
+• Force the use of encryption between a web 
+application and the client browser. 
+• Understand the role of JAAS in 
+pluggable/extensible authentication for web 
+applications. 
+4
+
+Day Unit Objective(s) Hours 
+1 Developing with Java EE 
+• Review of Java EE (a.k.a. J2EE) 
+• Review of Java Web Application development with 
+JDBC and Servlets/JSPs/EL 
+• Overview of Data Access Object (DAO) design 
+pattern 
+• The pain of developing with JDBC and Servlets 
+4 
+1, 2 Hibernate 
+• Advantages of Hibernate compared to JDBC. 
+• Introduction  
+• ORM (Object Relational Mapping)  
+• Hibernate Architecture 
+• Hibernate Resources 
+• Object Life Cycle in Hibernate 
+• CRUD operations using Session methods using XML 
+and Annotations 
+• Problem of Granularity using Annotations 
+• Problem of Inheritance using Annotations 
+• Problem of Relationship using Annotations 
+6 
+(4+2) 
+2, 3 Retrieving data 
+• Hibernate Query Language (HQL) 
+• Named Queries 
+• Criteria API 
+• Query by example 
+8 
+(6+2) 
+3 Tuning Hibernate 
+• Logging 
+• Lazy loading 
+• Fetching strategies 
+• Caching 
+• Level of Caching 
+
+Day Unit Objective(s) Hours 
+1 Introduction 
+• Overview of Spring Technology 
+• The Motivation for Spring, Spring Architecture 
+• The Spring Framework 
+• Declaring and Managing Beans 
+• Inversion of Control Pattern 
+• BeanFactory vs ApplicationContext 
+• Dependencies and Dependency Injection (DI) 
+• XML Configuration of DI 
+• Spring Bean Autowiring 
+• Injection with @Autowire 
+• Java Based Configuration (@Configuration + @Bean) 
+5 
+1 Container Extensions 
+Points 
+• Bean Scope and Lifecycle 
+• Singleton, Prototype, and Other Scopes 
+• Configuring Scope 
+• Bean Lifecycle / Callbacks 
+3 
+2 Spring Expression 
+Language (SpEL) 
+• Introduction To SpEL 
+• SpEL Features 
+• SpEL expression evaluation against a specific object 
+instance 
+• SpEL in Bean Definition 
