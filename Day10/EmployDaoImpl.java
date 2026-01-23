@@ -40,4 +40,28 @@ public class EmployDaoImpl implements EmployDao {
 		return employList;
 	}
 
+	@Override
+	public Employ searchEmploy(int empno) {
+		String cmd = "select * from Employ where empno = ?";
+		List<Employ> employList = 
+				jdbcTemplate.query(cmd, new Object[] {empno}, new RowMapper<Employ>() {
+
+					@Override
+					public Employ mapRow(ResultSet rs, int rowNum) throws SQLException {
+						Employ employ = new Employ();
+						employ.setEmpno(rs.getInt("empno"));
+						employ.setName(rs.getString("name"));
+						employ.setGender(Gender.valueOf(rs.getString("gender")));
+						employ.setDept(rs.getString("dept"));
+						employ.setDesig(rs.getString("desig"));
+						employ.setBasic(rs.getDouble("basic"));
+						return employ;
+					}
+		});
+		if (employList.size()==1) {
+			return employList.get(0);
+		}
+		return null;
+	}
+
 }
