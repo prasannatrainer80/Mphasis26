@@ -1,6 +1,7 @@
 package com.java.spr;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -21,6 +22,51 @@ public class EmployDaoImpl {
 	public EmployDaoImpl() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public Employ searchEmploy(int empno) {
+		String cmd = "select * from Employ where empno=:empno";
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("empno", empno);
+		List<Employ> employList = namedParameterJdbcTemplate.query(cmd,params, (rs,rownum) -> {
+			Employ employ = new Employ();
+			employ.setEmpno(rs.getInt("empno"));
+			employ.setName(rs.getString("name"));
+			employ.setGender(Gender.valueOf(rs.getString("gender")));
+			employ.setDept(rs.getString("dept"));
+			employ.setDesig(rs.getString("desig"));
+			employ.setBasic(rs.getDouble("basic"));
+			return employ;
+		});
+		if (employList.size() == 0) {
+			return null;
+		}
+		return employList.get(0);
+	}
+	
+	public String deleteEmploy(int empno) {
+		String cmd = "Delete from Employ where empno=:empno";
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("empno", empno);
+		namedParameterJdbcTemplate.update(cmd, params);
+		return "Employ Record Deleted...";
+	}
+	
+	public String updateEmploy(Employ emp) {
+		        String sql = "Update Employ set Name=:name, gender=:gender, "
+		        		+ "dept=:dept,desig=:desig,basic=:basic "
+		        		+ " Where empno=:empno";
+
+		        Map<String, Object> paramMap = new HashMap<>();
+		        paramMap.put("empno", emp.getEmpno());
+		        paramMap.put("name", emp.getName());
+		        paramMap.put("gender", emp.getGender().toString());
+		        paramMap.put("dept", emp.getDept());
+		        paramMap.put("desig", emp.getDesig());
+		        paramMap.put("basic", emp.getBasic());
+
+		        namedParameterJdbcTemplate.update(sql, paramMap);
+		        return "Employ Record Updated...";
+		    }
 
 	 public String addEmploy(Employ emp) {
 
