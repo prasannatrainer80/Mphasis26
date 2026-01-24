@@ -1,33 +1,23 @@
 package com.java.spr;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jdbc.core.JdbcTemplate;
 
-public class EmployDaoImpl {
+public class EmployDaoImpl implements EmployDao {
+
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 	
-	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
+	@Value("#{'select * from Employ'}")
+	private String sqlQuery1;
 	
-	public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
-		return namedParameterJdbcTemplate;
-	}
-
-	public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
-		this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-	}
-
-	public EmployDaoImpl() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Employ searchEmploy(int empno) {
-		String cmd = "select * from Employ where empno=:empno";
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("empno", empno);
-		List<Employ> employList = namedParameterJdbcTemplate.query(cmd,params, (rs,rownum) -> {
+	@Override
+	public List<Employ> showEmploy() {
+		List<Employ> employList = jdbcTemplate.query(sqlQuery1, 
+				(rs,rownum) -> {
 			Employ employ = new Employ();
 			employ.setEmpno(rs.getInt("empno"));
 			employ.setName(rs.getString("name"));
@@ -37,54 +27,7 @@ public class EmployDaoImpl {
 			employ.setBasic(rs.getDouble("basic"));
 			return employ;
 		});
-		if (employList.size() == 0) {
-			return null;
-		}
-		return employList.get(0);
+		return employList;
 	}
-	
-	public String deleteEmploy(int empno) {
-		String cmd = "Delete from Employ where empno=:empno";
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("empno", empno);
-		namedParameterJdbcTemplate.update(cmd, params);
-		return "Employ Record Deleted...";
-	}
-	
-	public String updateEmploy(Employ emp) {
-		        String sql = "Update Employ set Name=:name, gender=:gender, "
-		        		+ "dept=:dept,desig=:desig,basic=:basic "
-		        		+ " Where empno=:empno";
 
-		        Map<String, Object> paramMap = new HashMap<>();
-		        paramMap.put("empno", emp.getEmpno());
-		        paramMap.put("name", emp.getName());
-		        paramMap.put("gender", emp.getGender().toString());
-		        paramMap.put("dept", emp.getDept());
-		        paramMap.put("desig", emp.getDesig());
-		        paramMap.put("basic", emp.getBasic());
-
-		        namedParameterJdbcTemplate.update(sql, paramMap);
-		        return "Employ Record Updated...";
-		    }
-
-	 public String addEmploy(Employ emp) {
-
-	        String sql = "insert into Employ(empno,name,gender,"
-	        		+ "dept,desig,basic) values(:empno,:name,:gender,"
-	        		+ ":dept,:desig,:basic)";
-
-	        Map<String, Object> paramMap = new HashMap<>();
-	        paramMap.put("empno", emp.getEmpno());
-	        paramMap.put("name", emp.getName());
-	        paramMap.put("gender", emp.getGender().toString());
-	        paramMap.put("dept", emp.getDept());
-	        paramMap.put("desig", emp.getDesig());
-	        paramMap.put("basic", emp.getBasic());
-
-	        namedParameterJdbcTemplate.update(sql, paramMap);
-	        return "Employ Record Inserted...";
-	    }
-
-	
 }
