@@ -9,4 +9,5 @@ public interface EmployDao {
 	Employ searchEmploy(int empno);
 	String updateEmploy(Employ employUpdated);
 	String deleteEmploy(int empno);
+	String addEmploy(Employ employ);
 }

@@ -15,16 +15,25 @@
 			<input type="text" name="name" />
 			<br/><br/>
 			Gender : 
-			<input type="text" name="gender" /> <br/><br/>
-			Department : 
-			<input type="text" name="dept" /> <br/><br/>
+			<select name="gender">
+				<option value="MALE">Male</option>
+				<option value="FEMALE">Female</option>
+			</select> <br/>
+			<select name="dept">
+				<option value="Java">Java</option>
+				<option value="Dotnet">Dotnet</option>
+				<option value="Angular">Angular</option>
+			</select> <br/>
 			Designation : 
-			<input type="text" name="desig" /> <br/><br/>
+			<select name="desig">
+				<option value="Developer">Developer</option>
+				<option value="TeamLead">TeamLead</option>
+				<option value="Manager">Manager</option>
+			</select><br/>
 			Basic : 
 			<input type="text" name="basic" /> <br/><br/>
 			<input type="submit" value="Add Employ" />
 		</center>
 	</form>
-
 </body>
 </html>

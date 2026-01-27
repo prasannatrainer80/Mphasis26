@@ -36,5 +36,7 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<hr/>
+		<a href="addemploy">Add Employ</a>
     </body>
 </html>

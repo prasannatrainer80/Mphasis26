@@ -80,5 +80,17 @@ public class EmployDaoImpl implements EmployDao {
 		return "Employ Record Deleted...";
 	}
 
+	@Override
+	public String addEmploy(Employ employ) {
+		String cmd ="Insert into Employ values(?,?,?,?,?,?)";
+		jdbcTemplate.update(cmd, new Object[] {employ.getEmpno(),
+				employ.getName(), 
+				employ.getGender(), employ.getDept(),
+				employ.getDesig(), employ.getBasic(), 
+					
+		});
+return "Employ Record Updated...";
+	}
+
 
 }
