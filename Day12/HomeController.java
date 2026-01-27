@@ -1,143 +1,50 @@
-package com.java.mvc.controller;
+package com.java.spr.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.java.mvc.config.MvcConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.java.spr.dao.EmployDao;
+import com.java.spr.model.Employ;
 
 @Controller
 public class HomeController {
 
-	private static List<Employ> employList = new ArrayList<>(Arrays.asList(
-		    new Employ(1, "Mythri", "FEMALE", "Java", "Programmer", 84824),
-		    new Employ(2, "Aakash", "MALE", "Java", "Expert", 90886),
-		    new Employ(3, "Shakeeb", "MALE", "Dotnet", "Programmer", 92824),
-		    new Employ(4, "Rishika", "FEMALE", "Java", "TL", 89022),
-		    new Employ(5, "Sravan", "MALE", "Sql", "Admin", 97222)
-		));
-
+	@Autowired
+	private EmployDao employDao;
+	
+	@RequestMapping(value="/updatefinal")
+	public ModelAndView updateFinal(@ModelAttribute Employ employUpdated) {
+		employDao.updateEmploy(employUpdated);
+		return new ModelAndView("redirect:/");
+	}
+	
+	@RequestMapping(value="/deleteemploy")
+	public ModelAndView deleteEmploy(HttpServletRequest req) {
+		int empno = Integer.parseInt(req.getParameter("empno"));
+		employDao.deleteEmploy(empno);
+		return new ModelAndView("redirect:/");
+	}
+	
+	@RequestMapping(value="/updateemploy")
+	public ModelAndView updateEmploy(HttpServletRequest request) {
+		int empno = Integer.parseInt(request.getParameter("empno"));
+		Employ employ = employDao.searchEmploy(empno);
+		return new ModelAndView("updateemploy","employ",employ);
+	}
 	
 	@RequestMapping(value="/")
-	public ModelAndView test(HttpServletResponse response) throws IOException{
-		return new ModelAndView("home");
-	}
-	
-	@RequestMapping(value = "/saveemploy", method = RequestMethod.POST)
-	public ModelAndView saveEmploy(@ModelAttribute Employ employNew) {
-		System.out.println(employNew);
-	    employList.add(employNew);
-
-	    return new ModelAndView("redirect:/showemploy");
-	}
-	
-	@RequestMapping(value="/addemploy")
-	public ModelAndView addEmploy() {
-		return new ModelAndView("addemploy");
-	}
-	
-	@RequestMapping(value="/showemploy")
-	public ModelAndView showEmploy() {
-	System.out.println(employList.size());
-	return new ModelAndView("showemploy","employList",employList);
-	}
-	
-	@RequestMapping(value="/shownames")
-	public ModelAndView showNames() {
-		List<String> names = new ArrayList<String>();
-		names.add("Likhitha");
-		names.add("Srinivas");
-		names.add("Chandu");
-		names.add("Sridhar Reddy");
-		names.add("Ssanvi");
-		return new ModelAndView("shownames","names",names);
-	}
-	
-	@RequestMapping(value="loginresult")
-	public ModelAndView result(HttpServletRequest req) {
-		String user = req.getParameter("userName");
-		String pwd = req.getParameter("passWord");
-		if (user.equals("Mphasis") && pwd.equals("Mphasis")) {
-			return new ModelAndView("success");
-		} else {
-			return new ModelAndView("error");
-		}
-	}
-	
-	@RequestMapping(value="/loginform")
-	public ModelAndView loginForm() {
-		return new ModelAndView("loginform");
-	}
-	
-	@RequestMapping(value="/showname")
-	public ModelAndView showName(HttpServletRequest req)
-			 {
-		String firstName = req.getParameter("firstName");
-		String lastName = req.getParameter("lastName");
-		String res = firstName + " " +lastName;
-		System.out.println(res);
-		ModelAndView mv = new ModelAndView("showname");
-		mv.addObject("fn",firstName);
-		mv.addObject("ln",lastName);
-		mv.addObject("res",res);
-		return mv;
-	}
-	
-	@RequestMapping(value="/nameform")
-	public ModelAndView nameform() {
-		return new ModelAndView("nameform");
-	}
-	
-	@RequestMapping(value="/calculation")
-	public ModelAndView calc(HttpServletRequest req) {
-		int firstNo, secondNo;
-		firstNo = Integer.parseInt(req.getParameter("firstNo"));
-		secondNo = Integer.parseInt(req.getParameter("secondNo"));
-		int sum = firstNo + secondNo;
-		int sub = firstNo - secondNo;
-		int mult = firstNo * secondNo;
-		ModelAndView mv = new ModelAndView("calcresult");
-		mv.addObject("firstNo",firstNo);
-		mv.addObject("secondNo",secondNo);
-		mv.addObject("sum",sum);
-		mv.addObject("sub",sub);
-		mv.addObject("mult",mult);
-		return mv;
-	}
-	
-	@RequestMapping(value="/calcform")
-	public ModelAndView calcForm() {
-		return new ModelAndView("calcinput");
-	}
-	
-	@RequestMapping(value="/show")
-	public ModelAndView show(HttpServletRequest req) {
-		String sname = req.getParameter("sname");
-		return new ModelAndView("show","sname",sname);
-	}
-	
-	@RequestMapping(value="/hello")
-	public ModelAndView hello() {
-		return new ModelAndView("hello");
-	}
-	
-	@RequestMapping(value="/name")
-	public ModelAndView name() {
-		return new ModelAndView("name");
-	}
-	
-	@RequestMapping(value="/sashank")
-	public ModelAndView sashank() {
-		return new ModelAndView("sashank");
+	public ModelAndView test(HttpServletResponse response) throws IOException
+	{
+		List<Employ> employList = employDao.showEmploy();
+		return new ModelAndView("home","employList",employList);
 	}
 }

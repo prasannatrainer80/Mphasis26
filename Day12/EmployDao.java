@@ -8,4 +8,5 @@ public interface EmployDao {
 	List<Employ> showEmploy();
 	Employ searchEmploy(int empno);
 	String updateEmploy(Employ employUpdated);
+	String deleteEmploy(int empno);
 }

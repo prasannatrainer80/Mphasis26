@@ -73,5 +73,12 @@ public class EmployDaoImpl implements EmployDao {
 		return "Employ Record Updated...";
 	}
 
+	@Override
+	public String deleteEmploy(int empno) {
+		String cmd = "delete from Employ where empno = ?";
+		jdbcTemplate.update(cmd, new Object[] {empno});
+		return "Employ Record Deleted...";
+	}
+
 
 }
