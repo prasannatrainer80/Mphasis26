@@ -30,20 +30,20 @@ public class HomeController {
 	@RequestMapping(value = "/saveemploy", method = RequestMethod.POST)
 	public ModelAndView saveEmploy(@ModelAttribute Employ employNew) {
 		employDao.addEmploy(employNew);
-		return new ModelAndView("redirect:/");
+		return new ModelAndView("redirect:/showemploy");
 	}
 	
 	@RequestMapping(value="/updatefinal")
 	public ModelAndView updateFinal(@ModelAttribute Employ employUpdated) {
 		employDao.updateEmploy(employUpdated);
-		return new ModelAndView("redirect:/");
+		return new ModelAndView("redirect:/showemploy");
 	}
 	
 	@RequestMapping(value="/deleteemploy")
 	public ModelAndView deleteEmploy(HttpServletRequest req) {
 		int empno = Integer.parseInt(req.getParameter("empno"));
 		employDao.deleteEmploy(empno);
-		return new ModelAndView("redirect:/");
+		return new ModelAndView("redirect:/showemploy");
 	}
 	
 	@RequestMapping(value="/updateemploy")
@@ -54,9 +54,26 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/")
-	public ModelAndView test(HttpServletResponse response) throws IOException
+	public ModelAndView login(HttpServletResponse response) throws IOException
 	{
+		return new ModelAndView("login");
+	}
+	
+	@RequestMapping(value="/showemploy")
+	public ModelAndView showEmploy() {
 		List<Employ> employList = employDao.showEmploy();
 		return new ModelAndView("home","employList",employList);
+	}
+	
+	@RequestMapping(value="/loginresult")
+	public ModelAndView test(HttpServletRequest request) throws IOException
+	{
+		String user = request.getParameter("userName");
+		String pwd = request.getParameter("passCode");
+		int res = employDao.login(user, pwd);
+		if (res==1) {
+			return new ModelAndView("redirect:/showemploy");
+		}
+		return new ModelAndView("redirect:/");
 	}
 }

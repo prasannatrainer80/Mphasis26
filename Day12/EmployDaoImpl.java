@@ -92,5 +92,18 @@ public class EmployDaoImpl implements EmployDao {
 return "Employ Record Updated...";
 	}
 
+	@Override
+	public int login(String user, String pwd) {
+		String cmd = "select count(*) cnt from Login "
+				+ " Where UserName = ? And PassCode = ?";
+		Integer count = jdbcTemplate.queryForObject(
+	            cmd,
+	            new Object[]{user, pwd},
+	            Integer.class
+	    );
+
+	    return count;
+	}
+
 
 }

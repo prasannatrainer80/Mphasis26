@@ -10,4 +10,5 @@ public interface EmployDao {
 	String updateEmploy(Employ employUpdated);
 	String deleteEmploy(int empno);
 	String addEmploy(Employ employ);
+	int login(String user, String pwd);
 }
