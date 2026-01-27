@@ -20,8 +20,15 @@
 		<c:forEach var="employ" items="${employList}">
 			<tr>
 				<td>${employ.empno} </td>
+				<td>${employ.name} </td>
+				<td>${employ.gender} </td>
+				<td>${employ.dept} </td>
+				<td>${employ.desig} </td>
+				<td>${employ.basic} </td>
 			</tr>
 		</c:forEach>
 	</table>
+	<hr/>
+	<a href="addemploy">Add Employ</a>
 </body>
 </html>

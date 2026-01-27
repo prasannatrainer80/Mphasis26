@@ -12,26 +12,43 @@ import com.java.mvc.config.MvcConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
 
+	private static List<Employ> employList = new ArrayList<>(Arrays.asList(
+		    new Employ(1, "Mythri", "FEMALE", "Java", "Programmer", 84824),
+		    new Employ(2, "Aakash", "MALE", "Java", "Expert", 90886),
+		    new Employ(3, "Shakeeb", "MALE", "Dotnet", "Programmer", 92824),
+		    new Employ(4, "Rishika", "FEMALE", "Java", "TL", 89022),
+		    new Employ(5, "Sravan", "MALE", "Sql", "Admin", 97222)
+		));
+
+	
 	@RequestMapping(value="/")
 	public ModelAndView test(HttpServletResponse response) throws IOException{
 		return new ModelAndView("home");
 	}
 	
+	@RequestMapping(value = "/saveemploy", method = RequestMethod.POST)
+	public ModelAndView saveEmploy(@ModelAttribute Employ employNew) {
+		System.out.println(employNew);
+	    employList.add(employNew);
+
+	    return new ModelAndView("redirect:/showemploy");
+	}
+	
+	@RequestMapping(value="/addemploy")
+	public ModelAndView addEmploy() {
+		return new ModelAndView("addemploy");
+	}
+	
 	@RequestMapping(value="/showemploy")
 	public ModelAndView showEmploy() {
-		List<Employ> employList = Arrays.asList(
-	new Employ(1, "Mythri", "FEMALE", "Java", "Programmer", 84824),
-	new Employ(2, "Aakash", "MALE", "Java", "Expert", 90886),
-	new Employ(3, "Shakeeb", "MALE", "Dotnet", "Programmer", 92824),
-	new Employ(4, "Rishika", "FEMALE", "Java", "TL", 89022),
-	new Employ(5, "Sravan", "MALE", "Sql", "Admin", 97222)
-				);
+	System.out.println(employList.size());
 	return new ModelAndView("showemploy","employList",employList);
 	}
 	

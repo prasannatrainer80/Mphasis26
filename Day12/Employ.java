@@ -9,6 +9,13 @@ public class Employ {
 	private String desig;
 	private double basic;
 	
+	
+	
+	@Override
+	public String toString() {
+		return "Employ [empno=" + empno + ", name=" + name + ", gender=" + gender + ", dept=" + dept + ", desig="
+				+ desig + ", basic=" + basic + "]";
+	}
 	public Employ() {
 		// TODO Auto-generated constructor stub
 	}
