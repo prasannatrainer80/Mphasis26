@@ -28,10 +28,10 @@
 					<td>${employ.desig}</td>
 					<td>${employ.basic}</td>
 					<td>
-		<a href=updateemploy.jsp?empno=${employ.empno}>Update</a>
+		<a href=updateemploy?empno=${employ.empno}>Update</a>
 					</td>
 					<td>
-		<a href=deleteemploy.jsp?empno=${employ.empno}>Delete</a>
+		<a href=deleteemploy?empno=${employ.empno}>Delete</a>
 					</td>
 				</tr>
 			</c:forEach>
