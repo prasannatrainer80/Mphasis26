@@ -20,6 +20,29 @@ public class EmployDao {
 		employList.add(employ);
 		return "Employ Record Inserted...";
 	}
+	
+	public String deleteEmploy(int empno) {
+		Employ employFound = searchEmploy(empno);
+		if (employFound !=null) {
+			employList.remove(employFound);
+			return "Employ Record Deleted...";
+		}
+		return "Employ Record not Found...";
+	}
+ 	
+	public String updateEmploy(Employ employ) {
+		Employ employFound = searchEmploy(employ.getEmpno());
+		if (employFound !=null) {
+			employFound.setName(employ.getName());
+			employFound.setGender(employ.getGender());
+			employFound.setDept(employ.getDept());
+			employFound.setDesig(employ.getDesig());
+			employFound.setBasic(employ.getBasic());
+			return "Employ Record Updated...";
+		}
+		return "Employ Record Not Exists...";
+	}
+	
 	public Employ searchEmploy(int empno) {
 		return employList.stream()
 		        .filter(e -> e.getEmpno() == empno)
