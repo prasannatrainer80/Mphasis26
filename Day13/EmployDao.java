@@ -14,6 +14,13 @@ public class EmployDao {
 	new Employ(5, "Sashank", "MALE", "React", "TL", 90472.22)
 				);
 	
+	public Employ searchEmploy(int empno) {
+		return employList.stream()
+		        .filter(e -> e.getEmpno() == empno)
+		        .findFirst()
+		        .orElse(null);
+	}
+	
 	public List<Employ> showEmploy() {
 		return employList;
 	}
