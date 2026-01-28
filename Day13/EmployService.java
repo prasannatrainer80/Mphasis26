@@ -2,7 +2,9 @@ package com.java.rest;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -22,10 +24,18 @@ public class EmployService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Employ[] showEmploy() {
 		Employ[] res = employDao.showEmploy().toArray(new Employ[
-		                    employDao.showEmploy().size()
-		                                                         ]);
+		                    employDao.showEmploy().size()]);
 		return res;
 	}
+	
+	  @POST
+	  @Path("/employInsert/")
+	  @Consumes(MediaType.APPLICATION_JSON)
+	  @Produces(MediaType.APPLICATION_JSON)
+	  public String insertEmploy(final Employ e) {
+		  return employDao.addEmploy(e);
+	  }
+
 	
 	@GET
 	@Path("employsearch/{empno}")
