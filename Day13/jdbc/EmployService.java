@@ -2,7 +2,9 @@ package com.java.rest;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -22,6 +24,14 @@ public class EmployService {
 		new ClassPathXmlApplicationContext("com/java/rest/jdbc.xml");
 		employDao = (EmployDaoImpl)context.getBean("employDaoImpl");
 	}
+	
+	  @POST
+	  @Path("/addemploy/")
+	  @Consumes(MediaType.APPLICATION_JSON)
+	  @Produces(MediaType.APPLICATION_JSON)
+	  public String insertEmploy(final Employ e) {
+		  return employDao.addEmploy(e);
+	  }
 	
 	@GET
 	@Path("/searchemploy/{empno}")
