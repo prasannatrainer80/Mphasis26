@@ -14,6 +14,26 @@ public class EmployService {
 	@Autowired
 	private EmployRepository repo;
 	
+	public Employ searchEmploy(int empno) {
+		return repo.findById(empno).get();
+	}
+	
+	public String deleteEmploy(int empno) {
+		Employ employ = searchEmploy(empno);
+		repo.delete(employ);
+		return "Employ Record Deleted...";
+	}
+	
+	public String updateEmploy(Employ employ) {
+		repo.save(employ);
+		return "Employ Record Updated...";
+	}
+	
+	public String addEmploy(Employ employ) {
+		repo.save(employ);
+		return "Employ Record Inserted...";
+	}
+	
 	public List<Employ> showEmploy() {
 		return repo.findAll();
 	}

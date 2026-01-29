@@ -1,7 +1,12 @@
-package com.example.demo;
+package com.example.demo.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Employ {
 	
+	@Id
 	private int empno;
 	private String name;
 	private String gender;
@@ -43,17 +48,6 @@ public class Employ {
 	}
 	public void setBasic(double basic) {
 		this.basic = basic;
-	}
-	public Employ(int empno, String name, String gender, String dept, String desig, double basic) {
-		this.empno = empno;
-		this.name = name;
-		this.gender = gender;
-		this.dept = dept;
-		this.desig = desig;
-		this.basic = basic;
-	}
-	public Employ() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	
