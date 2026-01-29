@@ -1,0 +1,9 @@
+package com.java.spr;
+
+public class Family {
+	
+	private String city;
+	private String state;
+	
+	
+}

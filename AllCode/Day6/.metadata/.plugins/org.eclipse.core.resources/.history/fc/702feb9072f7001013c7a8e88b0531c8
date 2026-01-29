@@ -1,0 +1,13 @@
+package com.java.spr;
+
+public class HelloImpl implements Hello {
+
+	private String message;
+	
+	@Override
+	public String sayHello(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

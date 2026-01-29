@@ -1,0 +1,9 @@
+package com.java.bank.dao;
+
+import java.sql.SQLException;
+
+import com.java.bank.model.Accounts;
+
+public interface AccountsDao {
+	String createAccount(Accounts accounts) throws ClassNotFoundException, SQLException;
+}

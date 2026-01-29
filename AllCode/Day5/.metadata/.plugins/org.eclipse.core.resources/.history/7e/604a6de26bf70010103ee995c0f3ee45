@@ -1,0 +1,7 @@
+package com.java.hib;
+
+public class ShowDetails {
+	public static void main(String[] args) {
+		
+	}
+}

@@ -1,0 +1,7 @@
+package com.java.custom;
+
+import javax.servlet.jsp.tagext.BodyTagSupport;
+
+public class UpperCaseHandler extends BodyTagSupport {
+
+}

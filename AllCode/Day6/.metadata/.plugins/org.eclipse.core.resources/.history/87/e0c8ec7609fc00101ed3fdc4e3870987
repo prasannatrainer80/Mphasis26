@@ -1,0 +1,15 @@
+package com.java.rest;
+
+import javax.websocket.server.PathParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+
+@Path("greeting")
+public class Greeting {
+
+	@GET
+	@Path("/salute/{sname}")
+	public String greetMe(@PathParam("sname") String sname) {
+		return "Good Morning...!"+sname;
+	}
+}

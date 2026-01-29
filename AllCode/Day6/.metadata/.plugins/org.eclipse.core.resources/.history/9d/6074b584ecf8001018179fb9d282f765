@@ -1,0 +1,11 @@
+package com.java.spr;
+
+import org.springframework.stereotype.Component;
+
+@Component(name="emp")
+public class Emp {
+
+	private int empno;
+	private String name;
+	private double basic;
+}

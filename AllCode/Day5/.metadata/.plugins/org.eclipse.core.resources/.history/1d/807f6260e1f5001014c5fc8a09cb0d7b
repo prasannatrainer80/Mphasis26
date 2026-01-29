@@ -1,0 +1,78 @@
+package com.java.lib.dao;
+
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+
+import com.java.lib.model.Books;
+import com.java.lib.model.LibUsers;
+import com.java.lib.model.TranBook;
+import com.java.lib.util.SessionHelper;
+
+public class LibraryDaoImpl implements LibraryDao {
+
+	SessionFactory sessionFactory;
+	Session session;
+	
+	@Override
+	public int authenticate(LibUsers libUsers) {
+		sessionFactory = SessionHelper.getSession(); 
+		session = sessionFactory.openSession();
+		Criteria cr = session.createCriteria(LibUsers.class);
+		cr.add(Restrictions.and(
+				Restrictions.eq("userName", libUsers.getUserName()),
+				Restrictions.eq("passWord",libUsers.getPassWord())
+				));
+		LibUsers libFound = (LibUsers)cr.uniqueResult();
+		if (libFound !=null) {
+			return 1;
+		}
+		return 0;
+	}
+
+	@Override
+	public List<Books> search(String searchType, String searchValue) {
+		sessionFactory = SessionHelper.getSession(); 
+		session = sessionFactory.openSession();
+		Criteria cr = session.createCriteria(Books.class);
+		if (searchType.equals("id")) {
+			cr.add(Restrictions.eq("id", Integer.parseInt(searchValue)));
+		} else if (searchType.equals("dept")) {
+			cr.add(Restrictions.eq("dept", searchValue));
+		} else if (searchType.equals("bookname")) {
+			cr.add(Restrictions.eq("name", searchValue));
+		} else if (searchType.equals("authorname")) {
+			cr.add(Restrictions.eq("author", searchValue));
+		}
+		return cr.list();
+	}
+	
+	public String issueOrNot(int bookId, String user) {
+		sessionFactory = SessionHelper.getSession();
+		session = sessionFactory.openSession();
+		Criteria cr = session.createCriteria(TranBook.class);
+	}
+
+	@Override
+	public String issueBook(int bookId, String user) {
+		sessionFactory = SessionHelper.getSession();
+		session = sessionFactory.openSession();
+		TranBook tbook = new TranBook();
+		tbook.setBookId(bookId);
+		tbook.setUserName(user);
+		Transaction trans = session.beginTransaction();
+		session.save(tbook);
+		Criteria cr = session.createCriteria(Books.class);
+		cr.add(Restrictions.eq("id", bookId));
+		Books book = (Books)cr.uniqueResult();
+		book.setTotalBooks(book.getTotalBooks()-1);
+		session.saveOrUpdate(book);
+		trans.commit();
+		return "Book with Id " +bookId + " Issued Successfully...\n";
+	}
+
+}

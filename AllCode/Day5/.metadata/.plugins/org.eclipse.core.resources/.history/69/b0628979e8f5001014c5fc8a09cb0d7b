@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<jsp:include page="Menu.jsp" /> <br/><br/>
+<c:set var="user" value="${sessionScope.user}" />
+<jsp:useBean id="libraryDao" class="com.java.lib.dao.LibraryDaoImpl" />
+<c:set var="books" value="${libraryDao.showIssuedBooks(user)}" />	
+<form method="get" action="Return.jsp">	
+	<table border="3" align="center">
+		<tr>
+			<th>TranBook Id</th>
+			<th>User Name</th>
+			<th>BookId</th>
+			<th>Return</th>
+		</tr>
+		<c:forEach var="book" items="${books}">
+			<tr>
+				<td>${book.tbId} </td>
+				<td>${book.userName}</td>
+				<td>${book.bookId}</td>
+				<td> 
+			<input type="checkbox" name="bookid" value=${book.bookId} />
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
+	<input type="submit" value="Return" />
+</form>
+</body>
+</html>

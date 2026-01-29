@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<servers>
+  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v8.5 Server at localhost-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v8.5 Server at localhost" name="Tomcat v8.5 Server at localhost" runtime-id="Apache Tomcat v8.5" server-type="org.eclipse.jst.server.tomcat.85" server-type-id="org.eclipse.jst.server.tomcat.85" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="8">
+    <list key="modules" value0="JspDemos::org.eclipse.jst.jee.server:JspDemos::jst.web::2.5" value1="JspJdbc::org.eclipse.jst.jee.server:JspJdbc::jst.web::2.5" value2="EmployDashBoard::org.eclipse.jst.jee.server:EmployDashBoard::jst.web::2.5" value3="BankProject::org.eclipse.jst.jee.server:BankProject::jst.web::2.5" value4="BeanExamples::org.eclipse.jst.jee.server:BeanExamples::jst.web::2.5" value5="JstlDemos::org.eclipse.jst.jee.server:JstlDemos::jst.web::2.5" value6="CustomTags::org.eclipse.jst.jee.server:CustomTags::jst.web::2.5" value7="CustomTagEx::org.eclipse.jst.jee.server:CustomTagEx::jst.web::2.5"/>
+  </server>
+</servers>

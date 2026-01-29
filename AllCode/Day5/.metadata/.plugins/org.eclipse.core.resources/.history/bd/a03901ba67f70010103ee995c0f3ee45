@@ -1,0 +1,33 @@
+package com.java.hib;
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
+
+import com.java.hib.model.Employ;
+
+public class Cache2 {
+	public static void main(String[] args) {
+		 SessionFactory sf = 
+					new AnnotationConfiguration().configure().buildSessionFactory();
+		Session session = sf.openSession();
+
+		Query query = session.createQuery("from Employ");
+
+//		query.setParameter("sal", 30000);
+		query.setCacheable(true);
+
+		List<Employ> list1 = query.list();
+		List<Employ> list2 = query.list();
+
+		session.close();
+		
+		sf.getCache().evictEntityData(Employ.class);
+		sf.getCache().evictAllRegions();
+
+
+	}
+}

@@ -1,0 +1,17 @@
+package com.java.rest;
+
+import javax.ws.rs.Path;
+
+/**
+ * Root resource (exposed at "myresource" path)
+ */
+@Path("myresource")
+public class MyResource {
+
+   
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getIt() {
+        return "Got it!";
+    }
+}

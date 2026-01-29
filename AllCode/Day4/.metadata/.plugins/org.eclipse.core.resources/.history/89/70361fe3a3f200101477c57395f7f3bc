@@ -1,0 +1,20 @@
+package com.java.jsp.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.List;
+
+import com.java.jsp.model.Employ;
+import com.java.jsp.util.ConnectionHelper;
+
+public class EmployDaoImpl implements EmployDao {
+	
+	Connection connection;
+	PreparedStatement psmt;
+	
+	@Override
+	public List<Employ> showEmploy() {
+		connection = ConnectionHelper.getConnection();
+	}
+
+}

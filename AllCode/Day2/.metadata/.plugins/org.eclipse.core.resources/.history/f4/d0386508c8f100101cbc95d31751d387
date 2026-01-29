@@ -1,0 +1,12 @@
+package com.java.serv.model;
+
+public class Employ {
+	
+	private int empno;
+	private String name;
+	private String dept;
+	private String desig;
+	private double basic;
+	
+	
+}

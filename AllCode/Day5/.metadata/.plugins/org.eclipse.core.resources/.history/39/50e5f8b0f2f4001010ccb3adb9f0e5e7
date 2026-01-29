@@ -1,0 +1,7 @@
+package com.java.hib.model;
+
+public class Employ {
+
+	private int empno;
+	private String name;
+}

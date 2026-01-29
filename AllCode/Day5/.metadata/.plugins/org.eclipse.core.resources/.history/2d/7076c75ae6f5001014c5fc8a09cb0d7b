@@ -1,0 +1,17 @@
+package com.java.lib.model;
+
+import java.sql.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TransReturn")
+public class TransReturn {
+
+	private int trId;
+	private String userName;
+	private int bookId;
+	private Date fromDate;
+	private Date toDate;
+}

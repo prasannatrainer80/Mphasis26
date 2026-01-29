@@ -1,0 +1,120 @@
+package com.java.bank.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.java.bank.model.Accounts;
+import com.java.bank.util.ConnectionHelper;
+
+public class AccountsDaoImpl implements AccountsDao {
+
+	Connection connection;
+	PreparedStatement psmt;
+	
+	public int generateAccountNo() throws ClassNotFoundException, SQLException {
+		connection = ConnectionHelper.getConnection();
+		String cmd ="select case when max(accountNo) IS NULL THEN 1 "
+				+ " else max(accountNo)+1 end accno from Accounts";
+		psmt = connection.prepareStatement(cmd);
+		ResultSet rs = psmt.executeQuery();
+		rs.next();
+		int accno = rs.getInt("accno");
+		psmt.close();
+		connection.close();
+		return accno;
+	}
+	
+	@Override
+	public String createAccount(Accounts accounts) throws ClassNotFoundException, SQLException {
+		int accno = generateAccountNo();
+		accounts.setAccountNo(accno);
+		String cmd = "Insert into Accounts(AccountNo,FirstName,LastName,"
+	+ "City,State,Amount,CheqFacil,AccountType) values(?,?,?,?,?,?,?,?)";
+		connection = ConnectionHelper.getConnection();
+		psmt = connection.prepareStatement(cmd);
+		psmt.setInt(1, accno);
+		psmt.setString(2, accounts.getFirstName());
+		psmt.setString(3, accounts.getLastName());
+		psmt.setString(4, accounts.getCity());
+		psmt.setString(5, accounts.getState());
+		psmt.setDouble(6, accounts.getAmount());
+		psmt.setString(7, accounts.getCheqFacil());
+		psmt.setString(8, accounts.getAccountType());
+		psmt.executeUpdate();
+		return "Account Created with Account No " +accno;
+	}
+
+	@Override
+	public Accounts searchAccount(int accountNo) throws ClassNotFoundException, SQLException {
+		connection = ConnectionHelper.getConnection();
+		String cmd = "select * from Accounts where accountNo = ?";
+		psmt = connection.prepareStatement(cmd);
+		psmt.setInt(1, accountNo);
+		ResultSet rs = psmt.executeQuery();
+		Accounts account = null;
+		if (rs.next()) {
+			account = new Accounts();
+			account.setAccountNo(accountNo);
+			account.setFirstName(rs.getString("firstName"));
+			account.setLastName(rs.getString("lastName"));
+			account.setCity(rs.getString("city"));
+			account.setState(rs.getString("state"));
+			account.setAmount(rs.getDouble("amount"));
+			account.setCheqFacil(rs.getString("cheqFacil"));
+			account.setAccountType(rs.getString("accountType"));
+		}
+		return account;
+	}
+
+	@Override
+	public String depositAccount(int accountNo, double depositAmount) throws ClassNotFoundException, SQLException {
+		connection = ConnectionHelper.getConnection();
+		Accounts account = searchAccount(accountNo);
+		if (account != null) {
+			String cmd = "Update Accounts Set Amount = Amount + ? Where "
+					+ " AccountNo = ?";
+			psmt = connection.prepareStatement(cmd);
+			psmt.setDouble(1, depositAmount);
+			psmt.setInt(2, accountNo);
+			psmt.executeUpdate();
+			cmd = "Insert into Trans(AccountNo,TransAmount,TransType) values(?,?,?)";
+			psmt = connection.prepareStatement(cmd);
+			psmt.setInt(1, accountNo);
+			psmt.setDouble(2, depositAmount);
+			psmt.setString(3, "C");
+			psmt.executeUpdate();
+			return "Amount Credited...";
+		}
+		return "Account No Not Found...";
+	}
+
+	@Override
+	public String withdrawAccount(int accountNo, double withdrawAmount) throws ClassNotFoundException, SQLException {
+		connection = ConnectionHelper.getConnection();
+		Accounts account = searchAccount(accountNo);
+		if (account != null) {
+			double balance = account.getAmount();
+			if (balance - withdrawAmount >= 0) {
+				String cmd = "Update Accounts Set Amount = Amount - ? Where "
+						+ " AccountNo = ?";
+				psmt = connection.prepareStatement(cmd);
+				psmt.setDouble(1, withdrawAmount);
+				psmt.setInt(2, accountNo);
+				psmt.executeUpdate();
+				cmd = "Insert into Trans(AccountNo,TransAmount,TransType) values(?,?,?)";
+				psmt = connection.prepareStatement(cmd);
+				psmt.setInt(1, accountNo);
+				psmt.setDouble(2, withdrawAmount);
+				psmt.setString(3, "D");
+				psmt.executeUpdate();
+				return "Amount Credited...";
+			} else {
+				return "Insufficient Funds...";
+			}
+		}
+		return "Account No Not Found...";
+	}
+
+}

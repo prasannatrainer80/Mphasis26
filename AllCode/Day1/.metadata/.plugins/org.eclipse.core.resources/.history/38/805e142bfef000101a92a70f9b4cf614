@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="post" action="EmployInsertServlet">
+		<center>
+			Employ No : 
+			<input type="number" name="empno" /> <br/><br/>
+			Employ Name : 
+			<input type="text" name="name" /> <br/><br/>
+			Gender : 
+			<select name="gender">
+				<option value="MALE">Male</option>
+				<option value="FEMALE">Female</option>
+			</select> <br/>
+		</center>
+	</form>
+</body>
+</html>

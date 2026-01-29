@@ -1,0 +1,17 @@
+package com.java.spr;
+
+package com.java.spr;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class SPel3 {
+    public static void main(String[] args) {
+
+        ApplicationContext ctx =
+                new AnnotationConfigApplicationContext(AppConfig.class);
+
+        SpelEx3 obj = ctx.getBean(SpelEx3.class);
+        System.out.println(obj.getResult()); // ✅ 30
+    }
+}

@@ -1,0 +1,10 @@
+package com.java.spr;
+
+public class SpelEx3 {
+	public static void main(String[] args) {
+		#{1 + 2}          // evaluates to 3
+		#{'Hello'.toUpperCase()}  // "HELLO"
+		#{true ? 'Yes' : 'No'}    // "Yes"
+
+	}
+}

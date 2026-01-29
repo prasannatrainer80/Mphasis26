@@ -1,0 +1,26 @@
+package com.java.hib;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
+
+public class Cache2 {
+	public static void main(String[] args) {
+		 SessionFactory sf = 
+					new AnnotationConfiguration().configure().buildSessionFactory();
+		Session session = sf.openSession();
+
+		Query<Employ> query = session.createQuery(
+		    "from Employee where salary > :sal", Employ.class);
+
+		query.setParameter("sal", 30000);
+		query.setCacheable(true);
+
+		List<Employee> list1 = query.list();
+		List<Employee> list2 = query.list();
+
+		session.close();
+
+	}
+}

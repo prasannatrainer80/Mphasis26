@@ -1,0 +1,18 @@
+package com.java.lib.dao;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.java.lib.model.LibUsers;
+
+public class LibraryDaoImpl implements LibraryDao {
+
+	SessionFactory sessionFactory;
+	Session session;
+	@Override
+	public int authenticate(LibUsers libUsers) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

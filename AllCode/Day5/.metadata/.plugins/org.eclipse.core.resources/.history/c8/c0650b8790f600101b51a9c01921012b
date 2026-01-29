@@ -1,0 +1,9 @@
+package com.java.hib.model;
+
+public class Login {
+
+	private String userName;
+	private String passCode;
+	
+	
+}

@@ -1,0 +1,26 @@
+package com.java.jdbc;
+
+import java.util.Scanner;
+
+public class EmployInsertMain {
+	public static void main(String[] args) {
+		int empno;
+		String name,gender,dept,desig;
+		double basic;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Employ Number  ");
+		empno = sc.nextInt();
+		System.out.println("Enter Employ Name  ");
+		name = sc.next();
+		System.out.println("Enter Gender  ");
+		gender = sc.next();
+		System.out.println("Enter Department ");
+		dept = sc.next();
+		System.out.println("Enter Designation  ");
+		desig = sc.next();
+		System.out.println("Enter Basic  ");
+		basic = sc.nextDouble();
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+	}
+}

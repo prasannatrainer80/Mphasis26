@@ -1,0 +1,5 @@
+package com.java.jsp.dao;
+
+public interface EmployDao {
+
+}

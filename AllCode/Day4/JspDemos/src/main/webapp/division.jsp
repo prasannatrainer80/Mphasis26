@@ -1,0 +1,32 @@
+<%@ page errorPage="error.jsp" language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="get" action="division.jsp">
+		<center>
+			First Number : 
+			<input type="number" name="firstNo" /> 
+			<br/><br/>
+			Second Number : 
+			<input type="number" name="secondNo" /> 
+			<br/><br/>
+			<input type="submit" value="Division" />
+		</center>
+	</form> <br/><hr/>
+	<%
+		if (request.getParameter("firstNo")!=null
+			&& request.getParameter("secondNo") !=null
+				) {
+			int firstNo = Integer.parseInt(request.getParameter("firstNo"));
+			int secondNo = Integer.parseInt(request.getParameter("secondNo"));
+			int result = firstNo / secondNo;
+			out.println("Division  " +result);
+		}
+	%>
+</body>
+</html>

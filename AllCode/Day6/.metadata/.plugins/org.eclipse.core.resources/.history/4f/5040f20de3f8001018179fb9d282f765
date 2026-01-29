@@ -1,0 +1,21 @@
+package com.java.spr;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Demo {
+	
+	private String message;
+	
+	private String company;
+
+	public String getMessage() {
+		return message;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+	
+	
+}

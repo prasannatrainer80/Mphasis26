@@ -1,0 +1,45 @@
+package com.java.filter;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+public class CalcFilter implements Filter {
+
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
+		int firstNo, secondNo;
+		firstNo = Integer.parseInt(request.getParameter("firstNo"));
+		secondNo = Integer.parseInt(request.getParameter("secondNo"));
+		if (firstNo <= 0 || secondNo <= 0) {
+			PrintWriter out = response.getWriter();
+			response.setContentType("text/html");
+	out.println("<p style='color:red'>Numbers Cannot be Zero or Negative </p>");
+	RequestDispatcher disp = request.getRequestDispatcher("Calc.html");
+	disp.include(request, response);
+		} else {
+			chain.doFilter(request, response);
+		}
+	}
+
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

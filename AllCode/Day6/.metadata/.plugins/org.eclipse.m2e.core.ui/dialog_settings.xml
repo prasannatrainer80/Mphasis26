@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="D:\Mphasis\Day6\RestExample"/>
+			<item value="D:\Mphasis\Day6\RestExNew1"/>
+			<item value="D:\Mphasis\Day6\SpringXmlMvc\src\main\webapp\WEB-INF\web.xml"/>
+			<item value="D:\Mphasis\Day6\RestExample1"/>
+			<item value="D:\Mphasis\Day6\SpringXmlMvc"/>
+			<item value="D:\Mphasis\Day6\SpringMVCList\src\main\webapp\WEB-INF\Spring-servlet.xml"/>
+			<item value="D:\Mphasis\Day6\SpringJdbcNew"/>
+			<item value="D:\Mphasis\Day6\SpElJdbc\src\main\java\com\java\spr\UpdateEmployMain.java"/>
+			<item value="D:\Mphasis\Day6\SpElExamples"/>
+			<item value="D:\Mphasis\Day6\SpringJdbcNew\src\main\java\com\java\spr\EmployDaoImpl.java"/>
+			<item value="D:\Mphasis\Day6\SpringJdbc\src\main\java\com\java\spr\AddEmployNewMain.java"/>
+			<item value="D:\Mphasis\Day6\SpringAutoConEx\src\main\java\com\java\spr\MainProg.java"/>
+			<item value="D:\Mphasis\Day6\SpringDiRef"/>
+			<item value="D:\Mphasis\Day6\Scope1"/>
+			<item value="D:\Mphasis\Day6\SpringWire"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item key="catalog" value="https://repo.maven.apache.org/maven2/archetype-catalog.xml"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+			<item value="com.java.rest"/>
+			<item value="com.java.mvc"/>
+			<item value="com.java.spr"/>
+			<item value="mphasis.SpringMvcXml"/>
+		</list>
+		<list key="groupId">
+			<item value="mphasis"/>
+		</list>
+		<list key="artifactId">
+			<item value="RestJdbc"/>
+			<item value="RestExample"/>
+			<item value="SpringMvcXml"/>
+			<item value="RestExNew1"/>
+			<item value="RestEx1"/>
+			<item value="RestExample1"/>
+			<item value="SpringXmlMvc"/>
+			<item value="SpringMvcJdbc"/>
+			<item value="SpringMvcHello"/>
+			<item value="SpElJdbc"/>
+			<item value="SpEl"/>
+			<item value="SpElExamples"/>
+			<item value="SpringJdbcNew"/>
+			<item value="SpringJdbc"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+			<item value="c"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.preferences.RemoteArchetypeCatalogDialog">
+		<list key="catalogUrl">
+			<item value="https://repo.maven.apache.org/maven2/archetype-catalog.xml"/>
+		</list>
+	</section>
+</section>

@@ -1,0 +1,78 @@
+package com.java.hib.dao;
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import com.java.hib.model.Employ;
+import com.java.hib.model.Login;
+import com.java.hib.util.SessionHelper;
+
+public class EmployDaoImpl implements EmployDao {
+
+	SessionFactory sessionFactory;
+	Session session;
+	
+	@Override
+	public List<Employ> showEmploy() {
+		sessionFactory = SessionHelper.getConnection();
+		session = sessionFactory.openSession();
+		Query query = session.createQuery("from Employ");
+		List<Employ> employList = query.list();
+		return employList;
+	}
+
+	@Override
+	public Employ searchEmploy(int empno) {
+		sessionFactory = SessionHelper.getConnection();
+		session = sessionFactory.openSession();
+		Query query = session.createQuery("from Employ where empno=" +empno);
+		Employ employ = (Employ)query.uniqueResult();
+		return employ;
+	}
+
+	@Override
+	public String addEmploy(Employ employ) {
+		sessionFactory = SessionHelper.getConnection();
+		session = sessionFactory.openSession();
+		Transaction trans = session.beginTransaction();
+		session.save(employ);
+		trans.commit();
+		return "Employ Record Inserted...";
+	}
+
+	@Override
+	public String updateEmploy(Employ employ) {
+		sessionFactory = SessionHelper.getConnection();
+		session = sessionFactory.openSession();
+		Transaction trans = session.beginTransaction();
+		session.saveOrUpdate(employ);
+		trans.commit();
+		return "Employ Record Updated...";
+	}
+
+	@Override
+	public String deleteEmploy(int empno) {
+		Employ employ = searchEmploy(empno);
+		sessionFactory = SessionHelper.getConnection();
+		session = sessionFactory.openSession();
+		Transaction trans = session.beginTransaction();
+		session.delete(employ);
+		trans.commit();
+		return "Employ Record Deleted...";
+	}
+
+	@Override
+	public int login(String user, String pwd) {
+		String cmd = "from Login where userName='" +user+"' "
+				+ " and passCode='" +pwd+"'";
+		sessionFactory = SessionHelper.getConnection();
+		session = sessionFactory.openSession();
+		Query query = session.createQuery(cmd);
+		
+	}
+
+}

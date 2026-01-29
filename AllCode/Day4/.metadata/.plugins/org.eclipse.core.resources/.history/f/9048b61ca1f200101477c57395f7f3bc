@@ -1,0 +1,9 @@
+package com.java.jsp.util;
+
+import java.sql.Connection;
+
+public class ConnectionHelper {
+	public static Connection getConnection() {
+		
+	}
+}

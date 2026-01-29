@@ -1,0 +1,24 @@
+package com.java.spr;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Demo {
+	
+	@Value("#{'Good Morning...'}")
+	private String message;
+	
+	@Value("#{'Mphasis'}")
+	private String company;
+
+	public String getMessage() {
+		return message;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+	
+	
+}

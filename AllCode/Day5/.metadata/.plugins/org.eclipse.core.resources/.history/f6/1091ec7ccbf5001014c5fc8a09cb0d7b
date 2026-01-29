@@ -1,0 +1,7 @@
+package com.java.lib.dao;
+
+import com.java.lib.model.LibUsers;
+
+public interface LibraryDao {
+	int authenticate(LibUsers libUsers);
+}

@@ -1,0 +1,13 @@
+package com.java.rest;
+
+import javax.ws.rs.Path;
+
+@Path("employservice")
+public class EmployService {
+
+	private static EmployDao employDao;
+	
+	static {
+		employDao = new EmployDao();
+	}
+}

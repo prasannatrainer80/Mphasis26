@@ -1,0 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="post" action="CreateAccount.jsp">
+		<center>
+			First Name : 
+		<input type="text" name="firstName" /> <br/><br/>
+			Last Name : 
+		<input type="text" name="lastName" /> <br/><br/>
+			City : 
+		<input type="text" name="city" /> <br/> <br/>
+			State : 
+		<input type="text" name="state" /> <br/> <br/>
+		 Amount : 
+		 <input type="number" name="amount" /> <br/><br/>
+		 Cheq Facil : 
+		 <select name="cheqFacil">
+		 	<option value="YES">Yes</option>
+		 	<option value="NO">No</option>
+		 </select><br/><br/>
+		 Account Type : 
+		 <select name="accountType">
+		 	<option value="Savings">Savings</option>
+		 	<option value="Current">Current</option>
+		 </select> <br/><br/>
+		 <input type="submit" value="Create Account" />
+		</center>
+	</form>
+</body>
+</html>

@@ -1,0 +1,15 @@
+package com.java.jsp.dao;
+
+import java.util.List;
+
+import com.java.jsp.model.Employ;
+
+public class EmployDaoImpl implements EmployDao {
+
+	@Override
+	public List<Employ> showEmploy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

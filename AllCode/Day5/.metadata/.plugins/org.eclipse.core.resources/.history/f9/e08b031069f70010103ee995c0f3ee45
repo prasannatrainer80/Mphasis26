@@ -1,0 +1,24 @@
+package com.java.hib;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
+
+import com.java.hib.model.Employ;
+
+import net.sf.ehcache.config.Configuration;
+
+public class Cache1 {
+	public static void main(String[] args) {
+		 SessionFactory sf = 
+					new AnnotationConfiguration().configure().buildSessionFactory();
+		 Session session = sf.openSession();
+
+		 Employ e1 = (Employ)session.get(Employ.class, 1);
+		 Employ e2 = (Employ)session.get(Employ.class, 1);
+
+		 System.out.println(e1 == e2); // true
+
+		 session.close();
+	}
+}

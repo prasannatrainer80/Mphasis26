@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.ehcache.org/v3">
+
+    <cache-template name="defaultTemplate">
+        <expiry>
+            <ttl unit="minutes">10</ttl>
+        </expiry>
+        <resources>
+            <heap unit="entries">1000</heap>
+        </resources>
+    </cache-template>
+
+    <cache alias="com.java.hib.model.Employ">
+        <uses-template>defaultTemplate</uses-template>
+    </cache>
+
+</config>

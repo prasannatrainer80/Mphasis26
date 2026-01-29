@@ -1,0 +1,8 @@
+package com.java.beans;
+
+public class Greeting {
+
+	private String message = "Good Morning...";
+	
+	
+}

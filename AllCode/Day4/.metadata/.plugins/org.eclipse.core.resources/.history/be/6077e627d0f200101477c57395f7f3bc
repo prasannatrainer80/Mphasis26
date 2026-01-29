@@ -1,0 +1,19 @@
+package com.java.bank.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import com.java.bank.model.Accounts;
+
+public class AccountsDaoImpl implements AccountsDao {
+
+	Connection connection;
+	PreparedStatement psmt;
+	
+	@Override
+	public String createAccount(Accounts accounts) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

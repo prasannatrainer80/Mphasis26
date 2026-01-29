@@ -1,0 +1,28 @@
+package com.java.rest;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+@Path("greeting")
+public class Greeting {
+
+	@GET
+	@Path("/salute/{sname}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String greetMe(@PathParam("sname") String sname) {
+		System.out.println("Sname is " +sname);
+		return "Good Morning...!"+sname;
+	}
+	
+	@GET
+	@Path("/show/{firstName}/{lastName}")
+	public String show(@PathParam("firstName") String firstName, 
+					@PathParam("lastName") String lastName
+			) {
+		String fullName = firstName + " " +lastName;
+		return fullName;
+	}
+}

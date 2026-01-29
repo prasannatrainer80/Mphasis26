@@ -1,0 +1,12 @@
+package com.java.spr;
+
+import org.springframework.beans.factory.annotation.Value;
+
+public class SpelEx3 {
+	@Value("#{10 + 20}")
+	private int result;
+
+	public static void main(String[] args) {
+		System.out.println(new SpelEx3().result);
+	}
+}

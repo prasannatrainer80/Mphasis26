@@ -1,0 +1,17 @@
+INDEX VERSION 1.134
+D:\Mphasis\Day4\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2215167958.index
+\BankProject\src\main\java
+D:\Mphasis\Day4\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3737666936.index
+\CustomTagEx\src\main\java
+D:\Mphasis\Day4\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\473296000.index
+\JspJdbc\src\main\java
+D:\Mphasis\Day4\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2838352734.index
+\CustomTags\src\main\java
+D:\Mphasis\Day4\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\304674156.index
+\JstlDemos\src\main\java
+D:\Mphasis\Day4\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\844257162.index
+\EmployDashBoard\src\main\java
+D:\Mphasis\Day4\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2664117777.index
+\JspDemos\src\main\java
+D:\Mphasis\Day4\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3591907772.index
+\BeanExamples\src\main\java

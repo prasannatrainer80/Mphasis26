@@ -1,0 +1,17 @@
+package com.java.spr;
+
+import org.springframework.stereotype.Component;
+
+@Component("beanHello")
+public class HelloImpl implements Hello {
+
+	 private String welcomeNote;
+	 private String greeting;
+	 private String endNote;
+	 
+	@Override
+	public void sayHello(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+}

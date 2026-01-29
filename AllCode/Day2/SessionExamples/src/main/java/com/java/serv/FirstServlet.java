@@ -1,0 +1,63 @@
+package com.java.serv;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.java.serv.model.Employ;
+
+/**
+ * Servlet implementation class FirstServlet
+ */
+public class FirstServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    /**
+     * Default constructor. 
+     */
+    public FirstServlet() {
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Employ> employList = Arrays.asList(
+				new Employ(1, "Sridhar", "Java", "Expert", 84823.44),
+				new Employ(2, "Likhitha", "Sql", "Developer", 99321.44),
+				new Employ(3, "Srinivas", "Angular", "Expert", 99823.44),
+				new Employ(4, "Varshitha", "Java", "Manager", 89823.44),
+				new Employ(5, "Aakash", "Java", "Expert", 98823.44)
+				);
+		
+		String sname = request.getParameter("sname");
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		out.println("Name from First Servlet is  " +sname+ "<br/>");
+		HttpSession session = request.getSession(true);
+		session.setAttribute("sname", sname);
+		Employ employ = new Employ(1, "Sridhar", "Java", "Expert", 84823.44);
+		session.setAttribute("employ", employ);
+		session.setAttribute("employList", employList);
+		out.println("<a href=SecondServlet>Second Servlet</a><br/><br/>");
+		out.println("<a href=EmployShowServlet>Employ Show</a><br/><br/>");
+		out.println("<a href=EmployListServlet>Employ List</a>");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
