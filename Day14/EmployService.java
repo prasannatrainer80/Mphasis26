@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.exception.EmployNotFoundException;
 import com.example.demo.model.Employ;
 import com.example.demo.repo.EmployRepository;
 
@@ -15,7 +16,8 @@ public class EmployService {
 	private EmployRepository repo;
 	
 	public Employ searchEmploy(int empno) {
-		return repo.findById(empno).get();
+	    return repo.findById(empno)
+	            .orElseThrow(() -> new EmployNotFoundException("Employ No Not Found..."));
 	}
 	
 	public String deleteEmploy(int empno) {
