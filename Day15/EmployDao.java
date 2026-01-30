@@ -3,6 +3,7 @@ package com.java.hib;
 import java.util.List;
 
 import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.transaction.annotation.Transactional;
 
 public class EmployDao {
 
@@ -12,14 +13,17 @@ public class EmployDao {
         this.hibernateTemplate = hibernateTemplate;
     }
 
+    @Transactional(readOnly=false)
     public int saveEmploy(Employ employ) {
         return (int) hibernateTemplate.save(employ);
     }
 
+    @Transactional(readOnly=false)
     public void updateEmploy(Employ employ) {
         hibernateTemplate.update(employ);
     }
 
+    @Transactional(readOnly=false)
     public void deleteEmploy(Employ employ) {
         hibernateTemplate.delete(employ);
     }
