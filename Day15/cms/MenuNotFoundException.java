@@ -1,13 +1,14 @@
-package com.example.demo.exception;
+package com.mphasis.cms.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class EmployNotFoundException extends RuntimeException {
+public class MenuNotFoundException extends RuntimeException {
 
-    public EmployNotFoundException(String message) {
+    public MenuNotFoundException(String message) {
         super(message);
     }
 }
+
 
