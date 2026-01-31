@@ -1,5 +1,7 @@
 package com.mphasis.cms.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,14 @@ public class OrderService {
 	@Autowired
 	private WalletService walletService;
 	
+	public List<Orders> showCustomerOrders(int cid) {
+		return orderRepository.findByCusId(cid);
+	}
+	
+	
+	public List<Orders> showCustomerPendingOrders(int cid) {
+		return orderRepository.findByCusIdAndOrdStatus(1, "PENDING");
+	}
 	public String palceOrder(Orders order) {
 		Menu menu = menuService.searchById(order.getMenId());
 		double price = menu.getMenuPrice();
