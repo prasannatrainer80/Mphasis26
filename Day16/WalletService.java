@@ -18,6 +18,9 @@ public class WalletService {
 		return walletRepo.findByCusId(custId);
 	}
 	
+	public void updateWallet(Wallet wallet) {
+		 walletRepo.save(wallet);
+	}
 	public Wallet showCustomerWalltInfo(int custId, String walType) {
 		return walletRepo.findByCusIdAndWalSource(custId, walType);
 	}
