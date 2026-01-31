@@ -12,3 +12,12 @@ http://localhost:9000/v3/api-docs
     <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
     <version>2.5.0</version>
 </dependency>
+
+{
+  "cusId": 1,
+  "venId": 1,
+  "menId": 1,
+  "walSource": "PAYTM",
+  "ordQty": 30000,
+  "ordComments": "Paytm Order"
+}
