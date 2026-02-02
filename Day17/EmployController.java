@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.model.Employ;
 import com.example.service.EmployService;
@@ -20,6 +19,20 @@ public class EmployController {
     @Autowired
     private EmployService employService;
 
+    @GetMapping("/addemploy")
+    public String addNewEmployee(Model model) {
+        Employ employ = new Employ();
+        model.addAttribute("employ", employ);
+        return "addemploy";
+    }
+
+    @PostMapping("/savenew")
+    public String saveEmploy(@ModelAttribute("employ") Employ employ) {
+        employService.addEmploy(employ);
+        return "redirect:/";
+    }
+
+    
     @PostMapping("/saveemploy")
     public String saveEmployee(@ModelAttribute("employ") 
     	Employ employ) {
