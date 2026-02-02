@@ -1,0 +1,25 @@
+package com.example.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.example.model.Employ;
+import com.example.service.EmployService;
+
+@Controller
+public class EmployController {
+
+    @Autowired
+    private EmployService employService;
+
+    @GetMapping("/")
+    public String showEmploy(Model model) {
+        List<Employ> employList = employService.showEmploy();
+        model.addAttribute("employList", employList);
+        return "employshow";   // employshow.html
+    }
+}
