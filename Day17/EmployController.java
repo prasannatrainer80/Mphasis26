@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.model.Employ;
 import com.example.service.EmployService;
@@ -16,6 +18,15 @@ public class EmployController {
     @Autowired
     private EmployService employService;
 
+    @GetMapping(value="/updateform/{empno}")
+    public String updateForm(@PathVariable(value="empno") int empno,
+    		Model model
+    		) {
+    	Employ employ = employService.searchEmploy(empno);
+    	model.addAttribute(employ);
+    	return "updateform";
+    }
+    
     @GetMapping("/")
     public String showEmploy(Model model) {
         List<Employ> employList = employService.showEmploy();
