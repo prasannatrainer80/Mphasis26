@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.model.Employ;
@@ -18,6 +20,13 @@ public class EmployController {
     @Autowired
     private EmployService employService;
 
+    @PostMapping("/saveemploy")
+    public String saveEmployee(@ModelAttribute("employ") 
+    	Employ employ) {
+        employService.updateEmploy(employ);
+        return "redirect:/";
+    }
+
     @GetMapping(value="/updateform/{empno}")
     public String updateForm(@PathVariable(value="empno") int empno,
     		Model model
@@ -25,6 +34,13 @@ public class EmployController {
     	Employ employ = employService.searchEmploy(empno);
     	model.addAttribute(employ);
     	return "updateform";
+    }
+    
+    @GetMapping(value="/deleteemploy/{empno}")
+    public String deleteemploy(@PathVariable(value="empno") int empno
+    		) {
+    	employService.deleteEmploy(empno);
+    	return "redirect:/";
     }
     
     @GetMapping("/")
