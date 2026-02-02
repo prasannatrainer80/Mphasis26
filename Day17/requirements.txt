@@ -1,0 +1,17 @@
+Vendor Orders
+
+select * from orders where ven_id=1;
+
+Vendor Pending Orders 
+
+select * from Orders where ven_id=1 AND Ord_Status='PENDING'
+
+public String acceptOrreject(int venId,int ordId,String status) {
+
+}
+
+call the above method as acceptOrReject(1,3,"YES");
+
+If yes-> Change the OrderId status to 'ACCEPTED'
+if No- change the OrderId status to 'DENIED' and refund the amount as billAmount to be refunded to particular WalletId of customer
+call the above method as acceptOrReject(1,3,"NO");
