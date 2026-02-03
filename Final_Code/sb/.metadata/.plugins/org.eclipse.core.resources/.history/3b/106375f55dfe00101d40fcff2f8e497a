@@ -1,0 +1,24 @@
+package com.mphasis.cms.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.mphasis.cms.model.Orders;
+import com.mphasis.cms.repo.OrderRepository;
+
+@Service
+public class OrderService {
+
+	@Autowired
+	private OrderRepository orderRepository;
+	
+	@Autowired
+	private MenuService menuService;
+	
+	@Autowired
+	private WalletService walletService;
+	
+	public String palceOrder(Orders order) {
+		
+	}
+}

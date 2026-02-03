@@ -1,0 +1,17 @@
+package com.java.spr;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class EmpDetails {
+
+	private int empno;
+	private String name;
+	private double basic;
+	
+	public void showInfo() {
+		System.out.println("Empno " +empno);
+		System.out.println("Name  "+name);
+		System.out.println("Basic  " +basic);
+	}
+}

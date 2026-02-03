@@ -1,0 +1,16 @@
+package com.java.rest;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class EmployService {
+
+	private static ApplicationContext context;
+	private static EmployDao employDao;
+	
+	static {
+		context = 
+		new ClassPathXmlApplicationContext("com/java/res/jdbc.xml");
+		employDao = (EmployDaoImpl)context.getBean("employDaoImpl");
+	}
+}

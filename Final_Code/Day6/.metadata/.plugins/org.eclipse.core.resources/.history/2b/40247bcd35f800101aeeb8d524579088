@@ -1,0 +1,16 @@
+package com.java.spr;
+
+import java.util.List;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+
+public class EmployDaoImpl implements EmployDao {
+
+	private JdbcTemplate jdbcTemplate;
+	@Override
+	public List<Employ> showEmploy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

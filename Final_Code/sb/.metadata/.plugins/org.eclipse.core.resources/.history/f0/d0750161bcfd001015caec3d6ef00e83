@@ -1,0 +1,14 @@
+package com.mphasis.cms.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.mphasis.cms.service.CustomerService;
+
+public class CustomerController {
+
+	@Autowired
+	private CustomerService customerService;
+	
+	
+}

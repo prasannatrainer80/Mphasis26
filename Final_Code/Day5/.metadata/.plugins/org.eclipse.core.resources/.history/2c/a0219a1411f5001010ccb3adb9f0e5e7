@@ -1,0 +1,50 @@
+package com.java.hib.dao;
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.java.hib.model.Employ;
+import com.java.hib.util.SessionHelper;
+
+public class EmployDaoImpl implements EmployDao {
+
+	SessionFactory sessionFactory;
+	Session session;
+	
+	@Override
+	public List<Employ> showEmploy() {
+		sessionFactory = SessionHelper.getConnection();
+		session = sessionFactory.openSession();
+		Query query = session.createQuery("from Employ");
+		List<Employ> employList = query.list();
+		return employList;
+	}
+
+	@Override
+	public Employ searchEmploy(int empno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String addEmploy(Employ employ) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String updateEmploy(Employ employ) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteEmploy(int empno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

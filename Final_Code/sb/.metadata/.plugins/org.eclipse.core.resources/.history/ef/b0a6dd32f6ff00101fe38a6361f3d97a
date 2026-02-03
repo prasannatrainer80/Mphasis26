@@ -1,0 +1,8 @@
+package com.mphasis.cms;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class GreetingController {
+
+}

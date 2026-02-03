@@ -1,0 +1,10 @@
+package com.java.spr;
+
+public class Student {
+
+	private int sno;
+	private String firstName;
+	private String lastName;
+	
+	
+}

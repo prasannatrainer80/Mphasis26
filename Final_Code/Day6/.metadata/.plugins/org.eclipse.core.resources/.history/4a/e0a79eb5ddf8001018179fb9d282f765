@@ -1,0 +1,15 @@
+package com.java.spr;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Demo {
+
+    @Value("#{10 + 20}")
+    private int result;
+
+    public int getResult() {
+        return result;
+    }
+}

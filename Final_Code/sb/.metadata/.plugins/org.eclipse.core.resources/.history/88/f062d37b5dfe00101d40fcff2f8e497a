@@ -1,0 +1,33 @@
+package com.mphasis.cms.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="Orders")
+public class Orders {
+
+	@Id
+	@Column(name="ORD_ID")
+	private int ordId;
+	@Column(name="CUS_ID")
+	private int cusId;
+	@Column(name="VEN_ID")
+	private int venId;
+	@Column(name="MEN_ID")
+	private int menId;
+	@Column(name="WAL_SOURCE")
+	private String walSource;
+	@Column(name="ORD_QTY")
+	private int ordQty;
+	@Column(name="ORD_BILLAMOUNT")
+	private double ordBillAmount;
+	@Column(name="ORD_STATUS")
+	private String ordStatus;
+	@Column(name="ORD_COMMENTS")
+	private String ordComments;
+	
+	
+}

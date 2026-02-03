@@ -1,0 +1,5 @@
+package com.mphasis.cms.service;
+
+public class MenuService {
+
+}

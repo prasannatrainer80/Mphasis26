@@ -1,0 +1,9 @@
+package com.mphasis.cms.repo;
+
+import com.mphasis.cms.model.Menu;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface MenuRepository extends CrudRepository<Menu, Integer> {
+
+}

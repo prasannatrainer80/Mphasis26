@@ -1,0 +1,10 @@
+package com.java.hib;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Answer13")
+public class Answer {
+
+}

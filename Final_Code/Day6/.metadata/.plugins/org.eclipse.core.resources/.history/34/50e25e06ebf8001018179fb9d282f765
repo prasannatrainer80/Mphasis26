@@ -1,0 +1,15 @@
+package com.java.spr;
+
+public class EmployMain {
+	public static void main(String[] args) {
+		 Employ employ1 = new Employ();
+	     employ1.setEmpno(1);
+	     employ1.setName("Prasanna");
+	     employ1.setBasic(85823);
+	     
+	     Employ employ2 = new Employ();
+	     employ2.setEmpno(2);
+	     employ2.setName("Sagar");
+	     employ2.setBasic(88723);
+	}
+}

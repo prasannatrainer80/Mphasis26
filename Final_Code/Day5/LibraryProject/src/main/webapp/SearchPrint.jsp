@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<jsp:include page="Menu.jsp" />
+	<jsp:useBean id="libraryDao" class="com.java.lib.dao.LibraryDaoImpl" />
+	<c:set var="searchtype" value="${param.searchtype}" />
+	<c:set var="searchvalue" value="${param.searchvalue}" />
+	<c:set var="books" value="${libraryDao.search(searchtype,searchvalue)}" />
+	<form method="get" action="issue.jsp">
+	<table border="3" align="center">
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Author</th>
+			<th>Edition</th>
+			<th>Department</th>
+			<th>Total Books</th>
+			<th>Select</th>
+		</tr>
+		<c:forEach var="book" items="${books}">
+			<tr>
+				<td>${book.id}</td>
+				<td>${book.name}</td>
+				<td>${book.author}</td>
+				<td>${book.edition}</td>
+				<td>${book.dept}</td>
+				<td>${book.totalBooks}</td>
+				<td>
+					<c:if test="${book.totalBooks > 0 }">
+						<input type='checkbox' name='bookid' value="${book.id}" >
+					</c:if>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
+	 <input type="submit" value="Issue Book(s)" />
+	</form>
+</body>
+</html>

@@ -1,0 +1,5 @@
+package com.mphasis.cms.controller;
+
+public class CustomerController {
+
+}

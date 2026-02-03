@@ -1,0 +1,13 @@
+package com.java.spr;
+
+import java.util.List;
+
+public class EmployDaoImpl implements EmployDao {
+
+	@Override
+	public List<Employ> showEmploy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

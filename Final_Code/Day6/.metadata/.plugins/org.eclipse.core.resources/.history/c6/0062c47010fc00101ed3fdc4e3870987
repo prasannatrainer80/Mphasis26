@@ -1,0 +1,9 @@
+package com.java.rest;
+
+import javax.ws.rs.Path;
+
+@Path("calc")
+public class CalcService {
+
+	
+}

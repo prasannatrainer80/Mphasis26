@@ -1,0 +1,10 @@
+package com.java.hib;
+
+import java.util.Scanner;
+
+public class EmploySearchMain {
+	public static void main(String[] args) {
+		int empno;
+		Scanner sc = new Scanner(System.in);
+	}
+}

@@ -1,0 +1,12 @@
+package com.java.rest;
+
+public class Training {
+
+	public String location() {
+		return "Chennai DLF";
+	}
+	
+	public String topic() {
+		return "Java FSD Advanced...Rest Services...";
+	}
+}

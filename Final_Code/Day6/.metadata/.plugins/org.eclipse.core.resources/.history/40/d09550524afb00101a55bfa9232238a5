@@ -1,0 +1,113 @@
+package com.java.mvc.controller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.java.mvc.config.MvcConfiguration;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class HomeController {
+
+	@RequestMapping(value="/")
+	public ModelAndView test(HttpServletResponse response) throws IOException{
+		return new ModelAndView("home");
+	}
+	
+	@RequestMapping(value="/shownames")
+	public ModelAndView showNames() {
+		List<String> names = new ArrayList<String>();
+		names.add("Likhitha");
+		names.add("Srinivas");
+		names.add("Chandu");
+		names.add("Sridhar Reddy");
+		names.add("Ssanvi");
+		return new ModelAndView("shownames","names",names);
+	}
+	
+	@RequestMapping(value="loginresult")
+	public ModelAndView result(HttpServletRequest req) {
+		String user = req.getParameter("userName");
+		String pwd = req.getParameter("passWord");
+		if (user.equals("Mphasis") && pwd.equals("Mphasis")) {
+			return new ModelAndView("success");
+		} else {
+			return new ModelAndView("error");
+		}
+	}
+	
+	@RequestMapping(value="/loginform")
+	public ModelAndView loginForm() {
+		return new ModelAndView("loginform");
+	}
+	
+	@RequestMapping(value="/showname")
+	public ModelAndView showName(HttpServletRequest req)
+			 {
+		String firstName = req.getParameter("firstName");
+		String lastName = req.getParameter("lastName");
+		String res = firstName + " " +lastName;
+		System.out.println(res);
+		ModelAndView mv = new ModelAndView("showname");
+		mv.addObject("fn",firstName);
+		mv.addObject("ln",lastName);
+		mv.addObject("res",res);
+		return mv;
+	}
+	
+	@RequestMapping(value="/nameform")
+	public ModelAndView nameform() {
+		return new ModelAndView("nameform");
+	}
+	
+	@RequestMapping(value="/calculation")
+	public ModelAndView calc(HttpServletRequest req) {
+		int firstNo, secondNo;
+		firstNo = Integer.parseInt(req.getParameter("firstNo"));
+		secondNo = Integer.parseInt(req.getParameter("secondNo"));
+		int sum = firstNo + secondNo;
+		int sub = firstNo - secondNo;
+		int mult = firstNo * secondNo;
+		ModelAndView mv = new ModelAndView("calcresult");
+		mv.addObject("firstNo",firstNo);
+		mv.addObject("secondNo",secondNo);
+		mv.addObject("sum",sum);
+		mv.addObject("sub",sub);
+		mv.addObject("mult",mult);
+		return mv;
+	}
+	
+	@RequestMapping(value="/calcform")
+	public ModelAndView calcForm() {
+		return new ModelAndView("calcinput");
+	}
+	
+	@RequestMapping(value="/show")
+	public ModelAndView show(HttpServletRequest req) {
+		String sname = req.getParameter("sname");
+		return new ModelAndView("show","sname",sname);
+	}
+	
+	@RequestMapping(value="/hello")
+	public ModelAndView hello() {
+		return new ModelAndView("hello");
+	}
+	
+	@RequestMapping(value="/name")
+	public ModelAndView name() {
+		return new ModelAndView("name");
+	}
+	
+	@RequestMapping(value="/sashank")
+	public ModelAndView sashank() {
+		return new ModelAndView("sashank");
+	}
+}

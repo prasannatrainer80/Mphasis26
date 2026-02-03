@@ -1,0 +1,17 @@
+package com.java.spr;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component("emp")
+public class Emp {
+
+	@Value("#{100}")
+	private int empno;
+	@Value("#{Srini}")
+	private String name;
+	@Value("#{85772.44}")
+	private double basic;
+	
+	
+}

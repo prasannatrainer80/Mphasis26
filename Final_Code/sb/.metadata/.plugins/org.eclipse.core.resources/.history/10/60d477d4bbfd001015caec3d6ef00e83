@@ -1,0 +1,5 @@
+package com.mphasis.cms.model;
+
+public class Customer {
+
+}

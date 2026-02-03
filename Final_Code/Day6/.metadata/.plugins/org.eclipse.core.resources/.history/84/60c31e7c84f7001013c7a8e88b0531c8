@@ -1,0 +1,13 @@
+package com.java.spr;
+
+import java.util.List;
+
+public class Trainer {
+	
+	private String trainerName;
+	private String location;
+	private List<Student> studentList;
+	
+	
+
+}

@@ -1,0 +1,18 @@
+package com.java.hib.dao;
+
+import java.util.List;
+
+import org.hibernate.SessionFactory;
+
+import com.java.hib.model.Employ;
+import com.java.hib.util.SessionHelper;
+
+public class EmployDaoImpl implements EmployDao {
+
+	SessionFactory sessionFactory;
+	@Override
+	public List<Employ> showEmploy() {
+		sessionFactory = SessionHelper.getConnection();
+	}
+
+}

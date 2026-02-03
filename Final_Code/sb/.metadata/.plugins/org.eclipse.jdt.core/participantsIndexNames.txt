@@ -1,0 +1,5 @@
+INDEX VERSION 1.134
+D:\Mphasis\sb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2437327644.index
+\SpringHibernateEx\src\main\java
+D:\Mphasis\sb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2514878053.index
+\HibernateSprExample\src\main\java

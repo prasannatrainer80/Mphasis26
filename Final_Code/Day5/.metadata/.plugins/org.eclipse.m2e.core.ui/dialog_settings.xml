@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="D:\Mphasis\Day5\HibXmlEx"/>
+			<item value="D:\Mphasis\Day5\ServletsAsyncs"/>
+			<item value="D:\Mphasis\Day5\OneToOneEx1"/>
+			<item value="D:\Mphasis\Day5\LibraryProject\src\main\webapp\History.jsp"/>
+			<item value="D:\Mphasis\Day5\JstlExamples\pom.xml"/>
+			<item value="D:\Mphasis\Day5\AsyncExample\src\main\java\com\java\async\AsyncDemoServlet.java"/>
+			<item value="D:\Mphasis\Day5\HibernateExample"/>
+			<item value="D:\Mphasis\Day5\HibernateExample\src\main\java\com\java\hib\EmployDeleteMain.java"/>
+			<item value="D:\Mphasis\Day5\HibernateEx1"/>
+			<item value="D:\Mphasis\Day5\JstlExamples\src\main\webapp\format1.jsp"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item key="catalog" value="https://repo.maven.apache.org/maven2/archetype-catalog.xml"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+			<item value="com.java.hib"/>
+			<item value="com.java.security"/>
+		</list>
+		<list key="groupId">
+			<item value="mphasis"/>
+		</list>
+		<list key="artifactId">
+			<item value="CacheExamples"/>
+			<item value="SecurityExample"/>
+			<item value="OneToManyEx"/>
+			<item value="OneToOneEx"/>
+			<item value="OneToMany"/>
+			<item value="OneToOneEx1"/>
+			<item value="HibXmlEx"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.preferences.RemoteArchetypeCatalogDialog">
+		<list key="catalogUrl">
+			<item value="https://repo.maven.apache.org/maven2/archetype-catalog.xml"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

@@ -1,0 +1,42 @@
+package com.java.lib.dao;
+
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
+
+import com.java.lib.model.Books;
+import com.java.lib.model.LibUsers;
+import com.java.lib.util.SessionHelper;
+
+public class LibraryDaoImpl implements LibraryDao {
+
+	SessionFactory sessionFactory;
+	Session session;
+	
+	@Override
+	public int authenticate(LibUsers libUsers) {
+		sessionFactory = SessionHelper.getSession(); 
+		session = sessionFactory.openSession();
+		Criteria cr = session.createCriteria(LibUsers.class);
+		cr.add(Restrictions.and(
+				Restrictions.eq("userName", libUsers.getUserName()),
+				Restrictions.eq("passWord",libUsers.getPassWord())
+				));
+		LibUsers libFound = (LibUsers)cr.uniqueResult();
+		if (libFound !=null) {
+			return 1;
+		}
+		return 0;
+	}
+
+	@Override
+	public List<Books> search(String searchType, String searchValue) {
+		sessionFactory = SessionHelper.getSession(); 
+		session = sessionFactory.openSession();
+		Criteria cr = session.createCriteria(LibUsers.class);
+	}
+
+}

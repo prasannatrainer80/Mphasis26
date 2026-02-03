@@ -1,0 +1,17 @@
+package com.java.spr;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class SpEl3 {
+    public static void main(String[] args) {
+
+        ApplicationContext ctx =
+                new AnnotationConfigApplicationContext(AppConfig.class);
+
+        Demo obj = ctx.getBean(Demo.class);
+        System.out.println(obj.getResult()); 
+        System.out.println(obj.getCompany());
+        System.out.println(obj.getRegion());
+    }
+}

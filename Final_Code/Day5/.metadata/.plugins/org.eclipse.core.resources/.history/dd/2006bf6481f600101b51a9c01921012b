@@ -1,0 +1,9 @@
+package com.java.hib;
+
+import com.java.hib.model.Employ;
+
+public class EmployInsert {
+	public static void main(String[] args) {
+		Employ employ = new Employ();
+	}
+}

@@ -1,0 +1,13 @@
+package com.java.lib.dao;
+
+import java.util.List;
+
+import com.java.lib.model.Books;
+import com.java.lib.model.LibUsers;
+
+public interface LibraryDao {
+	int authenticate(LibUsers libUsers);
+	List<Books> search(String searchType, String searchValue);
+	String issueBook(int bookId,String user);
+	
+}

@@ -1,0 +1,4 @@
+spring.application.name=SbSecurity1
+spring.security.user.name=user
+spring.security.user.password=user
+server.port=9191

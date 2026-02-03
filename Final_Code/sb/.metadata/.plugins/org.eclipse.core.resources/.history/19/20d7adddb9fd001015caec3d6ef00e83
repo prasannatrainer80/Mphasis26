@@ -1,0 +1,5 @@
+package com.mphasis.cms.exception;
+
+public class MenuNotFoundException {
+
+}

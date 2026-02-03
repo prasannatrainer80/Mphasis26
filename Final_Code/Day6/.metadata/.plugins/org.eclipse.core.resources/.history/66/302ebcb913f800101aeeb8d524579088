@@ -1,0 +1,16 @@
+package com.java.spr;
+
+import java.util.List;
+
+public class Trainer {
+	private String facultyName;
+	private List<Student> studentsList;
+	
+	public void teaching() {
+		System.out.println("Faculty  " +facultyName + " Sharing lunch with Students");
+		for (Student student : studentsList) {
+			student.display();
+		}
+	}
+
+}

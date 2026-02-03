@@ -1,0 +1,20 @@
+package com.mphasis.cms.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.mphasis.cms.model.Customer;
+import com.mphasis.cms.repo.CustomerRepository;
+
+@Service
+public class CustomerService {
+
+	@Autowired
+	private CustomerRepository customerRepository;
+	
+	public List<Customer> showCustomer() {
+		
+	}
+}

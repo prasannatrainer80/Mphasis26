@@ -1,0 +1,19 @@
+package com.java.spr;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
+public class EmpSpEl {
+	   @Value("#{emp.name}")
+	    private String name;
+
+	    @Value("#{emp.empno}")
+	    private int empno;
+
+	    @Value("#{emp.basic}")
+	    private double basic;
+	    public void show() {
+	        System.out.println(id + " - " + name);
+	    }
+}

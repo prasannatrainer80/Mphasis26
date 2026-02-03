@@ -1,0 +1,50 @@
+package com.java.mail;
+
+import java.util.Properties;
+import javax.mail.*;
+import javax.mail.internet.*;
+
+public class SendMail {
+
+    public static void main(String[] args) {
+
+        String to = "srinivassamala913@gmail.com";
+
+        // MUST be same as authenticated Gmail
+        String from = "prasanna.vsp80@gmail.com";
+
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "465");
+        properties.put("mail.smtp.ssl.enable", "true");
+        properties.put("mail.smtp.auth", "true");
+
+        Session session = Session.getInstance(properties,
+            new Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(
+                        "prasanna.vsp80@gmail.com",
+                        "shankar@3137"   // ✅ NO SPACES
+                    );
+                }
+            });
+
+        session.setDebug(true);
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            message.setRecipients(
+                    Message.RecipientType.TO,
+                    InternetAddress.parse(to));
+            message.setSubject("This is the Subject Line! Mphasis Programming");
+            message.setText("This is actual message...From Trainer Prasanna");
+
+            Transport.send(message);
+            System.out.println("Sent message successfully");
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+}

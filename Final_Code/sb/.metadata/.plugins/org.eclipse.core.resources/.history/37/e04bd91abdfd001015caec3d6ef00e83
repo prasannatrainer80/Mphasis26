@@ -1,0 +1,29 @@
+package com.mphasis.cms.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.mphasis.cms.model.Customer;
+import com.mphasis.cms.model.Menu;
+import com.mphasis.cms.service.CustomerService;
+
+public class CustomerController {
+
+	@Autowired
+	private CustomerService customerService;
+	
+	@GetMapping(value="/showcustomer")
+	public ResponseEntity<List<Customer>> showCustomer() {
+		return ResponseEntity.ok(customerService.showCustomer());
+	}
+	
+	@GetMapping(value="/searchcustomer/{id}")
+	public ResponseEntity<Customer> searchByCustomerId(@PathVariable int id) {
+		return ResponseEntity.ok(customerService.searchByCustomerId(id));
+	}
+}

@@ -1,0 +1,20 @@
+package com.java.hib;
+
+import java.util.Scanner;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
+
+public class Cr2 {
+	public static void main(String[] args) {
+		SessionFactory sf = new AnnotationConfiguration()
+				.configure().buildSessionFactory();
+		Session session = sf.openSession();
+		int empno;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Employ No  ");
+		empno = sc.nextInt();
+		
+	}
+}

@@ -1,0 +1,11 @@
+package com.java.spr;
+
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+
+public class EmployDaoNewImpl {
+	  private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+	    public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+	        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
+	    }
+}

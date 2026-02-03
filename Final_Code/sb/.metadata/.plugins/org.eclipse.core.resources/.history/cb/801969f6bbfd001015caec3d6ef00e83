@@ -1,0 +1,5 @@
+package com.mphasis.cms.repo;
+
+public interface CustomerRepository {
+
+}
